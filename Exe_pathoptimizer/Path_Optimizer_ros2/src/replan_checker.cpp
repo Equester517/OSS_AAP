@@ -23,10 +23,10 @@ namespace autoware::path_optimizer
 ReplanChecker::ReplanChecker(const ReplanCheckerParam & param)
 : param_(param)
 {
-  std::cout << "[ReplanChecker] Initialized with:" << std::endl;
-  std::cout << "  - Max path shape change: " << param_.max_path_shape_change_dist << " m" << std::endl;
-  std::cout << "  - Max ego moving dist: " << param_.max_ego_moving_dist << " m" << std::endl;
-  std::cout << "  - Max delta time: " << param_.max_delta_time_sec << " s" << std::endl;
+  // std::cout << "[ReplanChecker] Initialized with:" << std::endl;
+  // std::cout << "  - Max path shape change: " << param_.max_path_shape_change_dist << " m" << std::endl;
+  // std::cout << "  - Max ego moving dist: " << param_.max_ego_moving_dist << " m" << std::endl;
+  // std::cout << "  - Max delta time: " << param_.max_delta_time_sec << " s" << std::endl;
 }
 
 bool ReplanChecker::isReplanRequired(
@@ -38,25 +38,25 @@ bool ReplanChecker::isReplanRequired(
   if (!prev_traj_points_.has_value() || 
       !prev_ego_pose_.has_value() || 
       !prev_replanned_time_sec_.has_value()) {
-    std::cout << "[ReplanChecker] No previous data - replan required" << std::endl;
+    // std::cout << "[ReplanChecker] No previous data - replan required" << std::endl;
     return true;
   }
   
   // Check time threshold
   double delta_time = current_time_sec - prev_replanned_time_sec_.value();
   if (delta_time > param_.max_delta_time_sec) {
-    std::cout << "[ReplanChecker] Time threshold exceeded (" 
-              << delta_time << " > " << param_.max_delta_time_sec 
-              << ") - replan required" << std::endl;
+    // std::cout << "[ReplanChecker] Time threshold exceeded (" 
+    // << delta_time << " > " << param_.max_delta_time_sec 
+    // << ") - replan required" << std::endl;
     return true;
   }
   
   // Check ego moving distance
   double ego_moving_dist = calculateDistance(current_ego_pose, prev_ego_pose_.value());
   if (ego_moving_dist > param_.max_ego_moving_dist) {
-    std::cout << "[ReplanChecker] Ego moving distance exceeded (" 
-              << ego_moving_dist << " > " << param_.max_ego_moving_dist 
-              << ") - replan required" << std::endl;
+    // std::cout << "[ReplanChecker] Ego moving distance exceeded (" 
+    // << ego_moving_dist << " > " << param_.max_ego_moving_dist 
+    // << ") - replan required" << std::endl;
     return true;
   }
   
@@ -64,13 +64,13 @@ bool ReplanChecker::isReplanRequired(
   double path_shape_change = calculatePathShapeChange(
     current_trajectory, prev_traj_points_.value());
   if (path_shape_change > param_.max_path_shape_change_dist) {
-    std::cout << "[ReplanChecker] Path shape change exceeded (" 
-              << path_shape_change << " > " << param_.max_path_shape_change_dist 
-              << ") - replan required" << std::endl;
+    // std::cout << "[ReplanChecker] Path shape change exceeded (" 
+    // << path_shape_change << " > " << param_.max_path_shape_change_dist 
+    // << ") - replan required" << std::endl;
     return true;
   }
   
-  std::cout << "[ReplanChecker] No replan required" << std::endl;
+  // std::cout << "[ReplanChecker] No replan required" << std::endl;
   return false;
 }
 
@@ -83,8 +83,8 @@ void ReplanChecker::updatePreviousData(
   prev_ego_pose_ = ego_pose;
   prev_replanned_time_sec_ = current_time_sec;
   
-  std::cout << "[ReplanChecker] Updated previous data (time=" 
-            << current_time_sec << ")" << std::endl;
+  // std::cout << "[ReplanChecker] Updated previous data (time=" 
+  // << current_time_sec << ")" << std::endl;
 }
 
 void ReplanChecker::reset()
@@ -93,7 +93,7 @@ void ReplanChecker::reset()
   prev_ego_pose_ = std::nullopt;
   prev_replanned_time_sec_ = std::nullopt;
   
-  std::cout << "[ReplanChecker] Reset" << std::endl;
+  // std::cout << "[ReplanChecker] Reset" << std::endl;
 }
 
 double ReplanChecker::calculatePathShapeChange(

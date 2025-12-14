@@ -1304,10 +1304,10 @@ void PPort_MVP2OCP::SendEventplanning_scenarioplanning_lanedriving_motionplannin
             }
             else
             {
-                m_logger.LogError() << "PPort_MVP2OCP::SendEventplanning_scenarioplanning_lanedriving_motionplanning_motionvelocityplanner_trajectoryCyclic::Send::" << send.Error().Message();
+                // m_logger.LogError() << "PPort_MVP2OCP::SendEventplanning_scenarioplanning_lanedriving_motionplanning_motionvelocityplanner_trajectoryCyclic::Send::" << send.Error().Message();
             }
         }
-        std::this_thread::sleep_for(std::chrono::seconds(1));
+        std::this_thread::sleep_for(std::chrono::seconds(5));
     }
 }
  

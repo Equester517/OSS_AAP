@@ -81,18 +81,18 @@ void RPort_SCr2OCP::Terminate()
     if (m_interface)
     {
         // stop subscribe
-        StopSubscribeclock();
-        StopSubscribelocalization_acceleration();
+        // StopSubscribeclock();
+        // StopSubscribelocalization_acceleration();
         StopSubscribelocalization_kinematicstate();
-        StopSubscribemap_vectormap();
-        StopSubscribeperception_objectrecognition_objects();
-        StopSubscribeperception_obstaclesegmentation_pointcloud();
-        StopSubscribeperception_occupancygridmap_map();
-        StopSubscribeperception_trafficlightrecognition_trafficsignals();
-        StopSubscribeplanning_scenarioplanning_lanedriving_behaviorplanning_behaviorpathplanner_input_lateraloffset();
-        StopSubscribeplanning_scenarioplanning_maxvelocitydefault();
+        // StopSubscribemap_vectormap();
+        // StopSubscribeperception_objectrecognition_objects();
+        // StopSubscribeperception_obstaclesegmentation_pointcloud();
+        // StopSubscribeperception_occupancygridmap_map();
+        // StopSubscribeperception_trafficlightrecognition_trafficsignals();
+        // StopSubscribeplanning_scenarioplanning_lanedriving_behaviorplanning_behaviorpathplanner_input_lateraloffset();
+        // StopSubscribeplanning_scenarioplanning_maxvelocitydefault();
         StopSubscribescenario();
-        StopSubscribesystem_operationmode_state();
+        // StopSubscribesystem_operationmode_state();
         
         // stop find service
         m_interface->StopFindService(*m_findHandle);
@@ -137,18 +137,18 @@ void RPort_SCr2OCP::Find(ara::com::ServiceHandleContainer<oss::srv::SCr2OCP::pro
         m_found = true;
         
         // subscribe events
-        Subscribeclock();
-        Subscribelocalization_acceleration();
+        // Subscribeclock();
+        // Subscribelocalization_acceleration();
         Subscribelocalization_kinematicstate();
-        Subscribemap_vectormap();
-        Subscribeperception_objectrecognition_objects();
-        Subscribeperception_obstaclesegmentation_pointcloud();
-        Subscribeperception_occupancygridmap_map();
-        Subscribeperception_trafficlightrecognition_trafficsignals();
-        Subscribeplanning_scenarioplanning_lanedriving_behaviorplanning_behaviorpathplanner_input_lateraloffset();
-        Subscribeplanning_scenarioplanning_maxvelocitydefault();
+        // Subscribemap_vectormap();
+        // Subscribeperception_objectrecognition_objects();
+        // Subscribeperception_obstaclesegmentation_pointcloud();
+        // Subscribeperception_occupancygridmap_map();
+        // Subscribeperception_trafficlightrecognition_trafficsignals();
+        // Subscribeplanning_scenarioplanning_lanedriving_behaviorplanning_behaviorpathplanner_input_lateraloffset();
+        // Subscribeplanning_scenarioplanning_maxvelocitydefault();
         Subscribescenario();
-        Subscribesystem_operationmode_state();
+        // Subscribesystem_operationmode_state();
     }
 }
  
@@ -1402,11 +1402,11 @@ void RPort_SCr2OCP::ReceiveEventscenarioCyclic()
                 }));
                 if (recv->HasValue())
                 {
-                    m_logger.LogVerbose() << "RPort_SCr2OCP::ReceiveEventscenario::GetNewSamples::" << recv->Value();
+                    // m_logger.LogVerbose() << "RPort_SCr2OCP::ReceiveEventscenario::GetNewSamples::" << recv->Value();
                 }
                 else
                 {
-                    m_logger.LogError() << "RPort_SCr2OCP::ReceiveEventscenario::GetNewSamples::" << recv->Error().Message();
+                    // m_logger.LogError() << "RPort_SCr2OCP::ReceiveEventscenario::GetNewSamples::" << recv->Error().Message();
                 }
             }
         }

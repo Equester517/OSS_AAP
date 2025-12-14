@@ -80,17 +80,17 @@ void RPort_SCr2MP::Terminate()
     if (m_interface)
     {
         // stop subscribe
-        StopSubscribeclock();
-        StopSubscribelocalization_acceleration();
+        // StopSubscribeclock();
+        // StopSubscribelocalization_acceleration();
         StopSubscribelocalization_kinematicstate();
-        StopSubscribemap_vectormap();
-        StopSubscribeperception_objectrecognition_objects();
-        StopSubscribeperception_obstaclesegmentation_pointcloud();
-        StopSubscribeperception_occupancygridmap_map();
-        StopSubscribeperception_trafficlightrecognition_trafficsignals();
-        StopSubscribeplanning_scenarioplanning_lanedriving_behaviorplanning_behaviorpathplanner_input_lateraloffset();
-        StopSubscribeplanning_scenarioplanning_maxvelocitydefault();
-        StopSubscribesystem_operationmode_state();
+        // StopSubscribemap_vectormap();
+        // StopSubscribeperception_objectrecognition_objects();
+        // StopSubscribeperception_obstaclesegmentation_pointcloud();
+        // StopSubscribeperception_occupancygridmap_map();
+        // StopSubscribeperception_trafficlightrecognition_trafficsignals();
+        // StopSubscribeplanning_scenarioplanning_lanedriving_behaviorplanning_behaviorpathplanner_input_lateraloffset();
+        // StopSubscribeplanning_scenarioplanning_maxvelocitydefault();
+        // StopSubscribesystem_operationmode_state();
         
         // stop find service
         m_interface->StopFindService(*m_findHandle);
@@ -471,11 +471,11 @@ void RPort_SCr2MP::ReceiveEventlocalization_kinematicstateCyclic()
                 }));
                 if (recv->HasValue())
                 {
-                    m_logger.LogVerbose() << "RPort_SCr2MP::ReceiveEventlocalization_kinematicstate::GetNewSamples::" << recv->Value();
+                    // m_logger.LogVerbose() << "RPort_SCr2MP::ReceiveEventlocalization_kinematicstate::GetNewSamples::" << recv->Value();
                 }
                 else
                 {
-                    m_logger.LogError() << "RPort_SCr2MP::ReceiveEventlocalization_kinematicstate::GetNewSamples::" << recv->Error().Message();
+                    // m_logger.LogError() << "RPort_SCr2MP::ReceiveEventlocalization_kinematicstate::GetNewSamples::" << recv->Error().Message();
                 }
             }
         }

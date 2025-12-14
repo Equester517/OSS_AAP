@@ -84,11 +84,11 @@ void RPort_MP2BPP::Terminate()
     if (m_interface)
     {
         // stop subscribe
-        StopSubscribeplanning_missionplanning_missionplanner_debug_goalfootprint();
-        StopSubscribeplanning_missionplanning_missionplanner_debug_processingtimems();
+        // StopSubscribeplanning_missionplanning_missionplanner_debug_goalfootprint();
+        // StopSubscribeplanning_missionplanning_missionplanner_debug_processingtimems();
         StopSubscribeplanning_missionplanning_route();
-        StopSubscribeplanning_missionplanning_routemarker();
-        StopSubscribeplanning_missionplanning_state();
+        // StopSubscribeplanning_missionplanning_routemarker();
+        // StopSubscribeplanning_missionplanning_state();
         
         // stop find service
         m_interface->StopFindService(*m_findHandle);
@@ -133,11 +133,11 @@ void RPort_MP2BPP::Find(ara::com::ServiceHandleContainer<oss::srv::MP2BPP::proxy
         m_found = true;
         
         // subscribe events
-        Subscribeplanning_missionplanning_missionplanner_debug_goalfootprint();
-        Subscribeplanning_missionplanning_missionplanner_debug_processingtimems();
+        // Subscribeplanning_missionplanning_missionplanner_debug_goalfootprint();
+        // Subscribeplanning_missionplanning_missionplanner_debug_processingtimems();
         Subscribeplanning_missionplanning_route();
-        Subscribeplanning_missionplanning_routemarker();
-        Subscribeplanning_missionplanning_state();
+        // Subscribeplanning_missionplanning_routemarker();
+        // Subscribeplanning_missionplanning_state();
     }
 }
  

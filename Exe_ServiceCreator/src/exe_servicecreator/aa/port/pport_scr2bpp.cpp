@@ -231,11 +231,11 @@ void PPort_SCr2BPP::SendEventlocalization_kinematicstateCyclic()
             auto send = m_interface->localization_kinematicstate.Send(m_localization_kinematicstateData);
             if (send.HasValue())
             {
-                m_logger.LogVerbose() << "PPort_SCr2BPP::SendEventlocalization_kinematicstateCyclic::Send";
+                // m_logger.LogVerbose() << "PPort_SCr2BPP::SendEventlocalization_kinematicstateCyclic::Send";
             }
             else
             {
-                m_logger.LogError() << "PPort_SCr2BPP::SendEventlocalization_kinematicstateCyclic::Send::" << send.Error().Message();
+                // m_logger.LogError() << "PPort_SCr2BPP::SendEventlocalization_kinematicstateCyclic::Send::" << send.Error().Message();
             }
         }
         std::this_thread::sleep_for(std::chrono::seconds(1));

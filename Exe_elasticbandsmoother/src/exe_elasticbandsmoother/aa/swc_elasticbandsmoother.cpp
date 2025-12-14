@@ -70,18 +70,24 @@ void Swc_elasticbandsmoother::Terminate()
  
 void Swc_elasticbandsmoother::Run()
 {
-    m_logger.LogVerbose() << "Swc_elasticbandsmoother::Run";
+    m_logger.LogVerbose() << "Swc_elasticbandsmoother::Run";    
     
     // start running
     m_running = true;
-    
-    m_workers.Async([this] { m_PPort_EBS2PO->SendEventplanning_scenarioplanning_lanedriving_motionplanning_elasticbandsmoother_debug_calculationtimeCyclic(); });
-    m_workers.Async([this] { m_PPort_EBS2PO->SendEventplanning_scenarioplanning_lanedriving_motionplanning_elasticbandsmoother_debug_ebfixedtrajCyclic(); });
-    m_workers.Async([this] { m_PPort_EBS2PO->SendEventplanning_scenarioplanning_lanedriving_motionplanning_elasticbandsmoother_debug_ebtrajCyclic(); });
-    m_workers.Async([this] { m_PPort_EBS2PO->SendEventplanning_scenarioplanning_lanedriving_motionplanning_elasticbandsmoother_debug_extendedtrajCyclic(); });
-    m_workers.Async([this] { m_PPort_EBS2PO->SendEventplanning_scenarioplanning_lanedriving_motionplanning_elasticbandsmoother_debug_processingtimemsCyclic(); });
-    m_workers.Async([this] { m_PPort_EBS2PO->SendEventplanning_scenarioplanning_lanedriving_motionplanning_elasticbandsmoother_output_trajCyclic(); });
+
+    std::this_thread::sleep_for(std::chrono::seconds(5));
+
     m_workers.Async([this] { m_PPort_EBS2PO->SendEventplanning_scenarioplanning_lanedriving_motionplanning_pathsmoother_pathCyclic(); });
+    m_workers.Async([this] { m_RPort_SCr2EBS->ReceiveEventlocalization_kinematicstateCyclic(); });
+    // m_workers.Async([this] { m_RPort_BVP2EBS->ReceiveEventplanning_scenarioplanning_lanedriving_behaviorplanning_pathCyclic(); });
+
+    
+    // m_workers.Async([this] { m_PPort_EBS2PO->SendEventplanning_scenarioplanning_lanedriving_motionplanning_elasticbandsmoother_debug_calculationtimeCyclic(); });
+    // m_workers.Async([this] { m_PPort_EBS2PO->SendEventplanning_scenarioplanning_lanedriving_motionplanning_elasticbandsmoother_debug_ebfixedtrajCyclic(); });
+    // m_workers.Async([this] { m_PPort_EBS2PO->SendEventplanning_scenarioplanning_lanedriving_motionplanning_elasticbandsmoother_debug_ebtrajCyclic(); });
+    // m_workers.Async([this] { m_PPort_EBS2PO->SendEventplanning_scenarioplanning_lanedriving_motionplanning_elasticbandsmoother_debug_extendedtrajCyclic(); });
+    // m_workers.Async([this] { m_PPort_EBS2PO->SendEventplanning_scenarioplanning_lanedriving_motionplanning_elasticbandsmoother_debug_processingtimemsCyclic(); });
+    // m_workers.Async([this] { m_PPort_EBS2PO->SendEventplanning_scenarioplanning_lanedriving_motionplanning_elasticbandsmoother_output_trajCyclic(); });
     // m_workers.Async([this] { m_RPort_BVP2EBS->ReceiveEventplanning_automodestatus_blindspotCyclic(); });
     // m_workers.Async([this] { m_RPort_BVP2EBS->ReceiveEventplanning_automodestatus_crosswalkCyclic(); });
     // m_workers.Async([this] { m_RPort_BVP2EBS->ReceiveEventplanning_automodestatus_intersectionCyclic(); });
@@ -146,18 +152,23 @@ void Swc_elasticbandsmoother::Run()
     // m_workers.Async([this] { m_RPort_BVP2EBS->ReceiveEventplanning_scenarioplanning_lanedriving_behaviorplanning_behaviorvelocityplanner_virtualwall_trafficlightCyclic(); });
     // m_workers.Async([this] { m_RPort_BVP2EBS->ReceiveEventplanning_scenarioplanning_lanedriving_behaviorplanning_behaviorvelocityplanner_virtualwall_walkwayCyclic(); });
     // m_workers.Async([this] { m_RPort_BVP2EBS->ReceiveEventplanning_scenarioplanning_lanedriving_behaviorplanning_debug_trafficsignalCyclic(); });
-    // m_workers.Async([this] { m_RPort_BVP2EBS->ReceiveEventplanning_scenarioplanning_lanedriving_behaviorplanning_pathCyclic(); });
-    m_workers.Async([this] { m_RPort_SCr2EBS->ReceiveEventclockCyclic(); });
-    m_workers.Async([this] { m_RPort_SCr2EBS->ReceiveEventlocalization_accelerationCyclic(); });
-    m_workers.Async([this] { m_RPort_SCr2EBS->ReceiveEventlocalization_kinematicstateCyclic(); });
-    m_workers.Async([this] { m_RPort_SCr2EBS->ReceiveEventmap_vectormapCyclic(); });
-    m_workers.Async([this] { m_RPort_SCr2EBS->ReceiveEventperception_objectrecognition_objectsCyclic(); });
-    m_workers.Async([this] { m_RPort_SCr2EBS->ReceiveEventperception_obstaclesegmentation_pointcloudCyclic(); });
-    m_workers.Async([this] { m_RPort_SCr2EBS->ReceiveEventperception_occupancygridmap_mapCyclic(); });
-    m_workers.Async([this] { m_RPort_SCr2EBS->ReceiveEventperception_trafficlightrecognition_trafficsignalsCyclic(); });
-    m_workers.Async([this] { m_RPort_SCr2EBS->ReceiveEventplanning_scenarioplanning_lanedriving_behaviorplanning_behaviorpathplanner_input_lateraloffsetCyclic(); });
-    m_workers.Async([this] { m_RPort_SCr2EBS->ReceiveEventplanning_scenarioplanning_maxvelocitydefaultCyclic(); });
-    m_workers.Async([this] { m_RPort_SCr2EBS->ReceiveEventsystem_operationmode_stateCyclic(); });
+    // m_workers.Async([this] { m_RPort_SCr2EBS->ReceiveEventclockCyclic(); });
+    // m_workers.Async([this] { m_RPort_SCr2EBS->ReceiveEventlocalization_accelerationCyclic(); });
+    // m_workers.Async([this] { m_RPort_SCr2EBS->ReceiveEventmap_vectormapCyclic(); });
+    // m_workers.Async([this] { m_RPort_SCr2EBS->ReceiveEventperception_objectrecognition_objectsCyclic(); });
+    // m_workers.Async([this] { m_RPort_SCr2EBS->ReceiveEventperception_obstaclesegmentation_pointcloudCyclic(); });
+    // m_workers.Async([this] { m_RPort_SCr2EBS->ReceiveEventperception_occupancygridmap_mapCyclic(); });
+    // m_workers.Async([this] { m_RPort_SCr2EBS->ReceiveEventperception_trafficlightrecognition_trafficsignalsCyclic(); });
+    // m_workers.Async([this] { m_RPort_SCr2EBS->ReceiveEventplanning_scenarioplanning_lanedriving_behaviorplanning_behaviorpathplanner_input_lateraloffsetCyclic(); });
+    // m_workers.Async([this] { m_RPort_SCr2EBS->ReceiveEventplanning_scenarioplanning_maxvelocitydefaultCyclic(); });
+    // m_workers.Async([this] { m_RPort_SCr2EBS->ReceiveEventsystem_operationmode_stateCyclic(); });
+
+    while(1)
+    {
+    // m_logger.LogVerbose() << "Swc_elasticbandsmoother::Running...";    
+    std::this_thread::sleep_for(std::chrono::seconds(5));   
+    }
+
     
     m_workers.Wait();
 }

@@ -86,16 +86,16 @@ void RPort_PO2MVP::Terminate()
     if (m_interface)
     {
         // stop subscribe
-        StopSubscribeplanning_scenarioplanning_lanedriving_motionplanning_pathoptimizer_debug_calculationtime();
-        StopSubscribeplanning_scenarioplanning_lanedriving_motionplanning_pathoptimizer_debug_extendedtraj();
-        StopSubscribeplanning_scenarioplanning_lanedriving_motionplanning_pathoptimizer_debug_marker();
-        StopSubscribeplanning_scenarioplanning_lanedriving_motionplanning_pathoptimizer_debug_mptfixedtraj();
-        StopSubscribeplanning_scenarioplanning_lanedriving_motionplanning_pathoptimizer_debug_mptreftraj();
-        StopSubscribeplanning_scenarioplanning_lanedriving_motionplanning_pathoptimizer_debug_mpttraj();
-        StopSubscribeplanning_scenarioplanning_lanedriving_motionplanning_pathoptimizer_debug_processingtimedetailms();
-        StopSubscribeplanning_scenarioplanning_lanedriving_motionplanning_pathoptimizer_debug_processingtimems();
+        // StopSubscribeplanning_scenarioplanning_lanedriving_motionplanning_pathoptimizer_debug_calculationtime();
+        // StopSubscribeplanning_scenarioplanning_lanedriving_motionplanning_pathoptimizer_debug_extendedtraj();
+        // StopSubscribeplanning_scenarioplanning_lanedriving_motionplanning_pathoptimizer_debug_marker();
+        // StopSubscribeplanning_scenarioplanning_lanedriving_motionplanning_pathoptimizer_debug_mptfixedtraj();
+        // StopSubscribeplanning_scenarioplanning_lanedriving_motionplanning_pathoptimizer_debug_mptreftraj();
+        // StopSubscribeplanning_scenarioplanning_lanedriving_motionplanning_pathoptimizer_debug_mpttraj();
+        // StopSubscribeplanning_scenarioplanning_lanedriving_motionplanning_pathoptimizer_debug_processingtimedetailms();
+        // StopSubscribeplanning_scenarioplanning_lanedriving_motionplanning_pathoptimizer_debug_processingtimems();
         StopSubscribeplanning_scenarioplanning_lanedriving_motionplanning_pathoptimizer_trajectory();
-        StopSubscribeplanning_scenarioplanning_lanedriving_motionplanning_pathoptimizer_virtualwall();
+        // StopSubscribeplanning_scenarioplanning_lanedriving_motionplanning_pathoptimizer_virtualwall();
         
         // stop find service
         m_interface->StopFindService(*m_findHandle);
@@ -140,16 +140,16 @@ void RPort_PO2MVP::Find(ara::com::ServiceHandleContainer<oss::srv::PO2MVP::proxy
         m_found = true;
         
         // subscribe events
-        Subscribeplanning_scenarioplanning_lanedriving_motionplanning_pathoptimizer_debug_calculationtime();
-        Subscribeplanning_scenarioplanning_lanedriving_motionplanning_pathoptimizer_debug_extendedtraj();
-        Subscribeplanning_scenarioplanning_lanedriving_motionplanning_pathoptimizer_debug_marker();
-        Subscribeplanning_scenarioplanning_lanedriving_motionplanning_pathoptimizer_debug_mptfixedtraj();
-        Subscribeplanning_scenarioplanning_lanedriving_motionplanning_pathoptimizer_debug_mptreftraj();
-        Subscribeplanning_scenarioplanning_lanedriving_motionplanning_pathoptimizer_debug_mpttraj();
-        Subscribeplanning_scenarioplanning_lanedriving_motionplanning_pathoptimizer_debug_processingtimedetailms();
-        Subscribeplanning_scenarioplanning_lanedriving_motionplanning_pathoptimizer_debug_processingtimems();
+        // Subscribeplanning_scenarioplanning_lanedriving_motionplanning_pathoptimizer_debug_calculationtime();
+        // Subscribeplanning_scenarioplanning_lanedriving_motionplanning_pathoptimizer_debug_extendedtraj();
+        // Subscribeplanning_scenarioplanning_lanedriving_motionplanning_pathoptimizer_debug_marker();
+        // Subscribeplanning_scenarioplanning_lanedriving_motionplanning_pathoptimizer_debug_mptfixedtraj();
+        // Subscribeplanning_scenarioplanning_lanedriving_motionplanning_pathoptimizer_debug_mptreftraj();
+        // Subscribeplanning_scenarioplanning_lanedriving_motionplanning_pathoptimizer_debug_mpttraj();
+        // Subscribeplanning_scenarioplanning_lanedriving_motionplanning_pathoptimizer_debug_processingtimedetailms();
+        // Subscribeplanning_scenarioplanning_lanedriving_motionplanning_pathoptimizer_debug_processingtimems();
         Subscribeplanning_scenarioplanning_lanedriving_motionplanning_pathoptimizer_trajectory();
-        Subscribeplanning_scenarioplanning_lanedriving_motionplanning_pathoptimizer_virtualwall();
+        // Subscribeplanning_scenarioplanning_lanedriving_motionplanning_pathoptimizer_virtualwall();
     }
 }
  
@@ -1175,11 +1175,11 @@ void RPort_PO2MVP::ReceiveEventplanning_scenarioplanning_lanedriving_motionplann
                 }
                 else
                 {
-                    m_logger.LogError() << "RPort_PO2MVP::ReceiveEventplanning_scenarioplanning_lanedriving_motionplanning_pathoptimizer_trajectory::GetNewSamples::" << recv->Error().Message();
+                    // m_logger.LogError() << "RPort_PO2MVP::ReceiveEventplanning_scenarioplanning_lanedriving_motionplanning_pathoptimizer_trajectory::GetNewSamples::" << recv->Error().Message();
                 }
             }
         }
-        std::this_thread::sleep_for(std::chrono::seconds(1));
+        std::this_thread::sleep_for(std::chrono::seconds(5));
     }
 }
  

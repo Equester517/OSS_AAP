@@ -558,10 +558,10 @@ void PPort_EBS2PO::SendEventplanning_scenarioplanning_lanedriving_motionplanning
             }
             else
             {
-                m_logger.LogError() << "PPort_EBS2PO::SendEventplanning_scenarioplanning_lanedriving_motionplanning_pathsmoother_pathCyclic::Send::" << send.Error().Message();
+                // m_logger.LogError() << "PPort_EBS2PO::SendEventplanning_scenarioplanning_lanedriving_motionplanning_pathsmoother_pathCyclic::Send::" << send.Error().Message();
             }
         }
-        std::this_thread::sleep_for(std::chrono::seconds(1));
+        std::this_thread::sleep_for(std::chrono::seconds(5));
     }
 }
  

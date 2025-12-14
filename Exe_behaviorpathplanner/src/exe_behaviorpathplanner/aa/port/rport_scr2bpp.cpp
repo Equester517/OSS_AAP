@@ -80,17 +80,17 @@ void RPort_SCr2BPP::Terminate()
     if (m_interface)
     {
         // stop subscribe
-        StopSubscribeclock();
-        StopSubscribelocalization_acceleration();
+        // StopSubscribeclock();
+        // StopSubscribelocalization_acceleration();
         StopSubscribelocalization_kinematicstate();
-        StopSubscribemap_vectormap();
-        StopSubscribeperception_objectrecognition_objects();
-        StopSubscribeperception_obstaclesegmentation_pointcloud();
-        StopSubscribeperception_occupancygridmap_map();
-        StopSubscribeperception_trafficlightrecognition_trafficsignals();
-        StopSubscribeplanning_scenarioplanning_lanedriving_behaviorplanning_behaviorpathplanner_input_lateraloffset();
-        StopSubscribeplanning_scenarioplanning_maxvelocitydefault();
-        StopSubscribesystem_operationmode_state();
+        // StopSubscribemap_vectormap();
+        // StopSubscribeperception_objectrecognition_objects();
+        // StopSubscribeperception_obstaclesegmentation_pointcloud();
+        // StopSubscribeperception_occupancygridmap_map();
+        // StopSubscribeperception_trafficlightrecognition_trafficsignals();
+        // StopSubscribeplanning_scenarioplanning_lanedriving_behaviorplanning_behaviorpathplanner_input_lateraloffset();
+        // StopSubscribeplanning_scenarioplanning_maxvelocitydefault();
+        // StopSubscribesystem_operationmode_state();
         
         // stop find service
         m_interface->StopFindService(*m_findHandle);
@@ -135,17 +135,17 @@ void RPort_SCr2BPP::Find(ara::com::ServiceHandleContainer<oss::srv::SCr2BPP::pro
         m_found = true;
         
         // subscribe events
-        Subscribeclock();
-        Subscribelocalization_acceleration();
+        // Subscribeclock();
+        // Subscribelocalization_acceleration();
         Subscribelocalization_kinematicstate();
-        Subscribemap_vectormap();
-        Subscribeperception_objectrecognition_objects();
-        Subscribeperception_obstaclesegmentation_pointcloud();
-        Subscribeperception_occupancygridmap_map();
-        Subscribeperception_trafficlightrecognition_trafficsignals();
-        Subscribeplanning_scenarioplanning_lanedriving_behaviorplanning_behaviorpathplanner_input_lateraloffset();
-        Subscribeplanning_scenarioplanning_maxvelocitydefault();
-        Subscribesystem_operationmode_state();
+        // Subscribemap_vectormap();
+        // Subscribeperception_objectrecognition_objects();
+        // Subscribeperception_obstaclesegmentation_pointcloud();
+        // Subscribeperception_occupancygridmap_map();
+        // Subscribeperception_trafficlightrecognition_trafficsignals();
+        // Subscribeplanning_scenarioplanning_lanedriving_behaviorplanning_behaviorpathplanner_input_lateraloffset();
+        // Subscribeplanning_scenarioplanning_maxvelocitydefault();
+        // Subscribesystem_operationmode_state();
     }
 }
  
@@ -446,11 +446,11 @@ void RPort_SCr2BPP::ReceiveEventlocalization_kinematicstateTriggered()
             }));
             if (recv->HasValue())
             {
-                m_logger.LogVerbose() << "RPort_SCr2BPP::ReceiveEventlocalization_kinematicstate::GetNewSamples::" << recv->Value();
+                // m_logger.LogVerbose() << "RPort_SCr2BPP::ReceiveEventlocalization_kinematicstate::GetNewSamples::" << recv->Value();
             }
             else
             {
-                m_logger.LogError() << "RPort_SCr2BPP::ReceiveEventlocalization_kinematicstate::GetNewSamples::" << recv->Error().Message();
+                // m_logger.LogError() << "RPort_SCr2BPP::ReceiveEventlocalization_kinematicstate::GetNewSamples::" << recv->Error().Message();
             }
         }
     }
@@ -470,11 +470,11 @@ void RPort_SCr2BPP::ReceiveEventlocalization_kinematicstateCyclic()
                 }));
                 if (recv->HasValue())
                 {
-                    m_logger.LogVerbose() << "RPort_SCr2BPP::ReceiveEventlocalization_kinematicstate::GetNewSamples::" << recv->Value();
+                    // m_logger.LogVerbose() << "RPort_SCr2BPP::ReceiveEventlocalization_kinematicstate::GetNewSamples::" << recv->Value();
                 }
                 else
                 {
-                    m_logger.LogError() << "RPort_SCr2BPP::ReceiveEventlocalization_kinematicstate::GetNewSamples::" << recv->Error().Message();
+                    // m_logger.LogError() << "RPort_SCr2BPP::ReceiveEventlocalization_kinematicstate::GetNewSamples::" << recv->Error().Message();
                 }
             }
         }

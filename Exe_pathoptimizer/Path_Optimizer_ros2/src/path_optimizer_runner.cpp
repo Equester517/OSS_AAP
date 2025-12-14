@@ -19,12 +19,12 @@ void run_once(
     const std::vector<Point>& right_bound)
 {
   if (path_points.empty()) {
-    std::cerr << "path_optimizer_runner: No path points provided" << std::endl;
+    // std::cerr << "path_optimizer_runner: No path points provided" << std::endl;
     return;
   }
 
-  std::cout << "path_optimizer_runner: Starting optimization with " << path_points.size() 
-            << " path points" << std::endl;
+  // std::cout << "path_optimizer_runner: Starting optimization with " << path_points.size() 
+  // << " path points" << std::endl;
 
   // Setup parameters (same defaults as before)
   PathOptimizerParam param;
@@ -55,20 +55,20 @@ void run_once(
   param.replan_checker.max_ego_moving_dist = 5.0;
   param.replan_checker.max_delta_time_sec = 2.0;
 
-  std::cout << "path_optimizer_runner: Parameters configured" << std::endl;
+  // std::cout << "path_optimizer_runner: Parameters configured" << std::endl;
 
   PathOptimizer optimizer(param, vehicle_info);
 
-  std::cout << "path_optimizer_runner: Ego state: pos=(" << ego_pose.position.x
-            << ", " << ego_pose.position.y << "), vel=" << ego_velocity << " m/s" << std::endl;
+  // std::cout << "path_optimizer_runner: Ego state: pos=(" << ego_pose.position.x
+  // << ", " << ego_pose.position.y << "), vel=" << ego_velocity << " m/s" << std::endl;
 
   // Run optimization with provided data
   OptimizationResult result = optimizer.optimizePathWithDebug(
       path_points, left_bound, right_bound, ego_pose, ego_velocity);
 
-  std::cout << "path_optimizer_runner: Success: " << (result.success ? "YES" : "NO") << std::endl;
-  std::cout << "path_optimizer_runner: Computation time: " << result.computation_time_ms << " ms" << std::endl;
-  std::cout << "path_optimizer_runner: Output points: " << result.trajectory.size() << std::endl;
+  // std::cout << "path_optimizer_runner: Success: " << (result.success ? "YES" : "NO") << std::endl;
+  // std::cout << "path_optimizer_runner: Computation time: " << result.computation_time_ms << " ms" << std::endl;
+  // std::cout << "path_optimizer_runner: Output points: " << result.trajectory.size() << std::endl;
 }
 
 } // namespace path_optimizer_runner

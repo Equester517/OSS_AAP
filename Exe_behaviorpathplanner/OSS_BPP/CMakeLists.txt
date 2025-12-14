@@ -19,8 +19,9 @@ target_include_directories(common_types INTERFACE
 # ------------------------------------------------------------
 # 1. 외부 라이브러리: Rosless-Lanelet2
 #    lanelet2_core, lanelet2_io, lanelet2_routing, ...
+#    NOTE: Included from Exe_missionplanner, do NOT add subdirectory here
 # ------------------------------------------------------------
-add_subdirectory(libs/Rosless-Lanelet2)
+# add_subdirectory(libs/Rosless-Lanelet2)
 
 # ------------------------------------------------------------
 # 2. 공통 유틸 (apps/common)

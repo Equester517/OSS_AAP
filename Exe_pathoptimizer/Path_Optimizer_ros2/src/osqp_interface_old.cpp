@@ -116,7 +116,7 @@ OSQPInterface::OSQPInterface(
   work_initialized_ = (setup_status == 0);
   
   if (!work_initialized_) {
-    std::cerr << "[OSQPInterface] Failed to setup workspace" << std::endl;
+    // std::cerr << "[OSQPInterface] Failed to setup workspace" << std::endl;
   }
 }
 
@@ -136,7 +136,7 @@ std::tuple<std::vector<double>, std::vector<double>, int, int, int>
 OSQPInterface::optimize()
 {
   if (!work_initialized_) {
-    std::cerr << "[OSQPInterface] Workspace not initialized" << std::endl;
+    // std::cerr << "[OSQPInterface] Workspace not initialized" << std::endl;
     return {{}, {}, -1, -1, -1};
   }
   
@@ -149,7 +149,7 @@ OSQPInterface::solve()
   const int solve_status = osqp_solve(work_.get());
   
   if (solve_status != 0) {
-    std::cerr << "[OSQPInterface] Solve failed with status " << solve_status << std::endl;
+    // std::cerr << "[OSQPInterface] Solve failed with status " << solve_status << std::endl;
   }
   
   latest_work_info_ = *(work_->info);
@@ -223,11 +223,11 @@ void OSQPInterface::updateBounds(
 
 void OSQPInterface::logUnsolvedStatus(const std::string & prefix) const
 {
-  std::cerr << prefix << " optimization failed. Status: " 
-            << latest_work_info_.status_val << std::endl;
-  std::cerr << prefix << " Status message: " 
-            << (latest_work_info_.status != nullptr ? latest_work_info_.status : "N/A") 
-            << std::endl;
+  // std::cerr << prefix << " optimization failed. Status: " 
+  // << latest_work_info_.status_val << std::endl;
+  // std::cerr << prefix << " Status message: " 
+  // << (latest_work_info_.status != nullptr ? latest_work_info_.status : "N/A") 
+  // << std::endl;
 }
 
 #endif  // USE_OSQP

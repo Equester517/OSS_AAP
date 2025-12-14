@@ -83,12 +83,12 @@ void RPort_EBS2PO::Terminate()
     if (m_interface)
     {
         // stop subscribe
-        StopSubscribeplanning_scenarioplanning_lanedriving_motionplanning_elasticbandsmoother_debug_calculationtime();
-        StopSubscribeplanning_scenarioplanning_lanedriving_motionplanning_elasticbandsmoother_debug_ebfixedtraj();
-        StopSubscribeplanning_scenarioplanning_lanedriving_motionplanning_elasticbandsmoother_debug_ebtraj();
-        StopSubscribeplanning_scenarioplanning_lanedriving_motionplanning_elasticbandsmoother_debug_extendedtraj();
-        StopSubscribeplanning_scenarioplanning_lanedriving_motionplanning_elasticbandsmoother_debug_processingtimems();
-        StopSubscribeplanning_scenarioplanning_lanedriving_motionplanning_elasticbandsmoother_output_traj();
+        // StopSubscribeplanning_scenarioplanning_lanedriving_motionplanning_elasticbandsmoother_debug_calculationtime();
+        // StopSubscribeplanning_scenarioplanning_lanedriving_motionplanning_elasticbandsmoother_debug_ebfixedtraj();
+        // StopSubscribeplanning_scenarioplanning_lanedriving_motionplanning_elasticbandsmoother_debug_ebtraj();
+        // StopSubscribeplanning_scenarioplanning_lanedriving_motionplanning_elasticbandsmoother_debug_extendedtraj();
+        // StopSubscribeplanning_scenarioplanning_lanedriving_motionplanning_elasticbandsmoother_debug_processingtimems();
+        // StopSubscribeplanning_scenarioplanning_lanedriving_motionplanning_elasticbandsmoother_output_traj();
         StopSubscribeplanning_scenarioplanning_lanedriving_motionplanning_pathsmoother_path();
         
         // stop find service
@@ -134,12 +134,12 @@ void RPort_EBS2PO::Find(ara::com::ServiceHandleContainer<oss::srv::EBS2PO::proxy
         m_found = true;
         
         // subscribe events
-        Subscribeplanning_scenarioplanning_lanedriving_motionplanning_elasticbandsmoother_debug_calculationtime();
-        Subscribeplanning_scenarioplanning_lanedriving_motionplanning_elasticbandsmoother_debug_ebfixedtraj();
-        Subscribeplanning_scenarioplanning_lanedriving_motionplanning_elasticbandsmoother_debug_ebtraj();
-        Subscribeplanning_scenarioplanning_lanedriving_motionplanning_elasticbandsmoother_debug_extendedtraj();
-        Subscribeplanning_scenarioplanning_lanedriving_motionplanning_elasticbandsmoother_debug_processingtimems();
-        Subscribeplanning_scenarioplanning_lanedriving_motionplanning_elasticbandsmoother_output_traj();
+        // Subscribeplanning_scenarioplanning_lanedriving_motionplanning_elasticbandsmoother_debug_calculationtime();
+        // Subscribeplanning_scenarioplanning_lanedriving_motionplanning_elasticbandsmoother_debug_ebfixedtraj();
+        // Subscribeplanning_scenarioplanning_lanedriving_motionplanning_elasticbandsmoother_debug_ebtraj();
+        // Subscribeplanning_scenarioplanning_lanedriving_motionplanning_elasticbandsmoother_debug_extendedtraj();
+        // Subscribeplanning_scenarioplanning_lanedriving_motionplanning_elasticbandsmoother_debug_processingtimems();
+        // Subscribeplanning_scenarioplanning_lanedriving_motionplanning_elasticbandsmoother_output_traj();
         Subscribeplanning_scenarioplanning_lanedriving_motionplanning_pathsmoother_path();
     }
 }
@@ -930,15 +930,15 @@ void RPort_EBS2PO::ReceiveEventplanning_scenarioplanning_lanedriving_motionplann
                 }));
                 if (recv->HasValue())
                 {
-                    m_logger.LogVerbose() << "RPort_EBS2PO::ReceiveEventplanning_scenarioplanning_lanedriving_motionplanning_pathsmoother_path::GetNewSamples::" << recv->Value();
+                    // m_logger.LogVerbose() << "RPort_EBS2PO::ReceiveEventplanning_scenarioplanning_lanedriving_motionplanning_pathsmoother_path::GetNewSamples::" << recv->Value();
                 }
                 else
                 {
-                    m_logger.LogError() << "RPort_EBS2PO::ReceiveEventplanning_scenarioplanning_lanedriving_motionplanning_pathsmoother_path::GetNewSamples::" << recv->Error().Message();
+                    // m_logger.LogError() << "RPort_EBS2PO::ReceiveEventplanning_scenarioplanning_lanedriving_motionplanning_pathsmoother_path::GetNewSamples::" << recv->Error().Message();
                 }
             }
         }
-        std::this_thread::sleep_for(std::chrono::seconds(1));
+        std::this_thread::sleep_for(std::chrono::seconds(5));
     }
 }
  

@@ -1,0 +1,41 @@
+file(REMOVE_RECURSE
+  "CMakeFiles/Exe_missionplanner.dir/exe_missionplanner/aa/port/pport_mp2bpp.cpp.o"
+  "CMakeFiles/Exe_missionplanner.dir/exe_missionplanner/aa/port/pport_mp2bpp.cpp.o.d"
+  "CMakeFiles/Exe_missionplanner.dir/exe_missionplanner/aa/port/pport_mp2gpv.cpp.o"
+  "CMakeFiles/Exe_missionplanner.dir/exe_missionplanner/aa/port/pport_mp2gpv.cpp.o.d"
+  "CMakeFiles/Exe_missionplanner.dir/exe_missionplanner/aa/port/pport_mp2pe.cpp.o"
+  "CMakeFiles/Exe_missionplanner.dir/exe_missionplanner/aa/port/pport_mp2pe.cpp.o.d"
+  "CMakeFiles/Exe_missionplanner.dir/exe_missionplanner/aa/port/pport_mp2rs.cpp.o"
+  "CMakeFiles/Exe_missionplanner.dir/exe_missionplanner/aa/port/pport_mp2rs.cpp.o.d"
+  "CMakeFiles/Exe_missionplanner.dir/exe_missionplanner/aa/port/pport_mp2scr.cpp.o"
+  "CMakeFiles/Exe_missionplanner.dir/exe_missionplanner/aa/port/pport_mp2scr.cpp.o.d"
+  "CMakeFiles/Exe_missionplanner.dir/exe_missionplanner/aa/port/pport_mp2ss.cpp.o"
+  "CMakeFiles/Exe_missionplanner.dir/exe_missionplanner/aa/port/pport_mp2ss.cpp.o.d"
+  "CMakeFiles/Exe_missionplanner.dir/exe_missionplanner/aa/port/rport_bpp2mp.cpp.o"
+  "CMakeFiles/Exe_missionplanner.dir/exe_missionplanner/aa/port/rport_bpp2mp.cpp.o.d"
+  "CMakeFiles/Exe_missionplanner.dir/exe_missionplanner/aa/port/rport_scr2mp.cpp.o"
+  "CMakeFiles/Exe_missionplanner.dir/exe_missionplanner/aa/port/rport_scr2mp.cpp.o.d"
+  "CMakeFiles/Exe_missionplanner.dir/exe_missionplanner/aa/swc_missionplanner.cpp.o"
+  "CMakeFiles/Exe_missionplanner.dir/exe_missionplanner/aa/swc_missionplanner.cpp.o.d"
+  "CMakeFiles/Exe_missionplanner.dir/main.cpp.o"
+  "CMakeFiles/Exe_missionplanner.dir/main.cpp.o.d"
+  "CMakeFiles/Exe_missionplanner.dir/ros2/arrival_checker.cpp.o"
+  "CMakeFiles/Exe_missionplanner.dir/ros2/arrival_checker.cpp.o.d"
+  "CMakeFiles/Exe_missionplanner.dir/ros2/default_planner.cpp.o"
+  "CMakeFiles/Exe_missionplanner.dir/ros2/default_planner.cpp.o.d"
+  "CMakeFiles/Exe_missionplanner.dir/ros2/mission_planner.cpp.o"
+  "CMakeFiles/Exe_missionplanner.dir/ros2/mission_planner.cpp.o.d"
+  "CMakeFiles/Exe_missionplanner.dir/ros2/mission_planner_runner.cpp.o"
+  "CMakeFiles/Exe_missionplanner.dir/ros2/mission_planner_runner.cpp.o.d"
+  "CMakeFiles/Exe_missionplanner.dir/ros2/ros_autosar_adapter.cpp.o"
+  "CMakeFiles/Exe_missionplanner.dir/ros2/ros_autosar_adapter.cpp.o.d"
+  "CMakeFiles/Exe_missionplanner.dir/ros2/route_handler.cpp.o"
+  "CMakeFiles/Exe_missionplanner.dir/ros2/route_handler.cpp.o.d"
+  "Exe_missionplanner"
+  "Exe_missionplanner.pdb"
+)
+
+# Per-language clean rules from dependency scanning.
+foreach(lang CXX)
+  include(CMakeFiles/Exe_missionplanner.dir/cmake_clean_${lang}.cmake OPTIONAL)
+endforeach()

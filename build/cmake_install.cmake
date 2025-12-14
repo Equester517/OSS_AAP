@@ -131,6 +131,36 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
+  include("/home/katech/AAP/OSS_AAP/build/Exe_missionplanner/cmake_install.cmake")
+endif()
+
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
+  include("/home/katech/AAP/OSS_AAP/build/Exe_behaviorpathplanner/cmake_install.cmake")
+endif()
+
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
+  include("/home/katech/AAP/OSS_AAP/build/Exe_behaviorvelocityplanner/cmake_install.cmake")
+endif()
+
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
+  include("/home/katech/AAP/OSS_AAP/build/Exe_elasticbandsmoother/cmake_install.cmake")
+endif()
+
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
+  include("/home/katech/AAP/OSS_AAP/build/Exe_pathoptimizer/cmake_install.cmake")
+endif()
+
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
+  include("/home/katech/AAP/OSS_AAP/build/Exe_motionvelocityplanner/cmake_install.cmake")
+endif()
+
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
   include("/home/katech/AAP/OSS_AAP/build/Exe_obstaclecruiseplanner/cmake_install.cmake")
 endif()
 

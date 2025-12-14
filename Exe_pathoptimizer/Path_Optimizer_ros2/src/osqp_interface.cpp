@@ -134,7 +134,7 @@ OSQPInterface::OSQPInterface(
   if (status == 0 && work_ != nullptr) {
     work_initialized_ = true;
   } else {
-    std::cerr << "[OSQPInterface] ERROR: Failed to setup solver (status: " << status << ")" << std::endl;
+    // std::cerr << "[OSQPInterface] ERROR: Failed to setup solver (status: " << status << ")" << std::endl;
   }
 }
 
@@ -161,7 +161,7 @@ std::tuple<std::vector<double>, std::vector<double>, int, int, int>
 OSQPInterface::optimize()
 {
   if (!work_initialized_ || work_ == nullptr) {
-    std::cerr << "[OSQPInterface] Solver not initialized" << std::endl;
+    // std::cerr << "[OSQPInterface] Solver not initialized" << std::endl;
     return {{}, {}, -1, -1, -1};
   }
   
@@ -172,14 +172,14 @@ std::tuple<std::vector<double>, std::vector<double>, int, int, int>
 OSQPInterface::solve()
 {
   if (!work_initialized_ || work_ == nullptr) {
-    std::cerr << "[OSQPInterface] ERROR: Solver not initialized" << std::endl;
+    // std::cerr << "[OSQPInterface] ERROR: Solver not initialized" << std::endl;
     return {{}, {}, -1, -1, -1};
   }
   
   const c_int solve_status = osqp_solve(work_);
   
   if (solve_status != 0) {
-    std::cerr << "[OSQPInterface] Solve failed with status " << solve_status << std::endl;
+    // std::cerr << "[OSQPInterface] Solve failed with status " << solve_status << std::endl;
   }
   
   std::vector<double> primal_solution;
@@ -211,19 +211,19 @@ OSQPInterface::solve()
 void OSQPInterface::updateCscP(const CSC_Matrix & P_csc)
 {
   // Not implemented in simplified version
-  std::cerr << "[OSQPInterface::updateCscP] Not implemented" << std::endl;
+  // std::cerr << "[OSQPInterface::updateCscP] Not implemented" << std::endl;
 }
 
 void OSQPInterface::updateQ(const std::vector<double> & q)
 {
   // Not implemented in simplified version
-  std::cerr << "[OSQPInterface::updateQ] Not implemented" << std::endl;
+  // std::cerr << "[OSQPInterface::updateQ] Not implemented" << std::endl;
 }
 
 void OSQPInterface::updateCscA(const CSC_Matrix & A_csc)
 {
   // Not implemented in simplified version
-  std::cerr << "[OSQPInterface::updateCscA] Not implemented" << std::endl;
+  // std::cerr << "[OSQPInterface::updateCscA] Not implemented" << std::endl;
 }
 
 void OSQPInterface::updateBounds(
@@ -231,7 +231,7 @@ void OSQPInterface::updateBounds(
   const std::vector<double> & upper_bound)
 {
   // Not implemented in simplified version
-  std::cerr << "[OSQPInterface::updateBounds] Not implemented" << std::endl;
+  // std::cerr << "[OSQPInterface::updateBounds] Not implemented" << std::endl;
 }
 
 void OSQPInterface::setWarmStart(
@@ -240,18 +240,18 @@ void OSQPInterface::setWarmStart(
 {
   // ⭐ ROS2 temporal consistency: OSQP에 이전 해를 initial guess로 제공
   if (!work_initialized_ || work_ == nullptr) {
-    std::cerr << "[OSQPInterface::setWarmStart] Solver not initialized" << std::endl;
+    // std::cerr << "[OSQPInterface::setWarmStart] Solver not initialized" << std::endl;
     return;
   }
   
   if (primal_vars.empty()) {
-    std::cerr << "[OSQPInterface::setWarmStart] Empty primal variables" << std::endl;
+    // std::cerr << "[OSQPInterface::setWarmStart] Empty primal variables" << std::endl;
     return;
   }
   
   if (static_cast<int>(primal_vars.size()) != param_n_) {
-    std::cerr << "[OSQPInterface::setWarmStart] Size mismatch: expected " << param_n_ 
-              << ", got " << primal_vars.size() << std::endl;
+    // std::cerr << "[OSQPInterface::setWarmStart] Size mismatch: expected " << param_n_ 
+    // << ", got " << primal_vars.size() << std::endl;
     return;
   }
   
@@ -262,7 +262,7 @@ void OSQPInterface::setWarmStart(
   c_int status = osqp_warm_start_x(work_, primal_float.data());
   
   if (status != 0) {
-    std::cerr << "[OSQPInterface::setWarmStart] Failed to set primal warm start" << std::endl;
+    // std::cerr << "[OSQPInterface::setWarmStart] Failed to set primal warm start" << std::endl;
     return;
   }
   
@@ -272,16 +272,16 @@ void OSQPInterface::setWarmStart(
     status = osqp_warm_start_y(work_, dual_float.data());
     
     if (status != 0) {
-      std::cerr << "[OSQPInterface::setWarmStart] Failed to set dual warm start" << std::endl;
+      // std::cerr << "[OSQPInterface::setWarmStart] Failed to set dual warm start" << std::endl;
     }
   }
   
-  std::cout << "[OSQPInterface] Warm start applied (primal size=" << primal_vars.size() << ")" << std::endl;
+  // std::cout << "[OSQPInterface] Warm start applied (primal size=" << primal_vars.size() << ")" << std::endl;
 }
 
 void OSQPInterface::logUnsolvedStatus(const std::string & prefix) const
 {
-  std::cerr << prefix << " optimization failed" << std::endl;
+  // std::cerr << prefix << " optimization failed" << std::endl;
 }
 
 #endif  // USE_OSQP

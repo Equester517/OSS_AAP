@@ -109,7 +109,7 @@ bool Swc_pathoptimizer::Initialize()
             std::lock_guard<std::mutex> lock(m_state_mutex);
             m_odometry = ros_autosar_adapter::FromOssOdometry(odom);
             m_odometry_received = true;
-            m_logger.LogInfo() << "Swc_pathoptimizer::Received odometry from ServiceCreator";
+            // m_logger.LogInfo() << "Swc_pathoptimizer::Received odometry from ServiceCreator";
         });
     
     return init;
@@ -164,9 +164,9 @@ void Swc_pathoptimizer::Start()
                         right_bound.push_back(p);
                     }
                     
-                    m_logger.LogInfo() << "Swc_pathoptimizer::Running path optimizer with " << path_points.size() 
-                                      << " points, vel=" << ego_velocity << " m/s, bounds=(" 
-                                      << left_bound.size() << "," << right_bound.size() << ")";
+                    // m_logger.LogInfo() << "Swc_pathoptimizer::Running path optimizer with " << path_points.size() 
+                    //                   << " points, vel=" << ego_velocity << " m/s, bounds=(" 
+                    //                   << left_bound.size() << "," << right_bound.size() << ")";
                     
                     path_optimizer_runner::run_once(
                         path_points,
@@ -176,7 +176,7 @@ void Swc_pathoptimizer::Start()
                         right_bound
                     );
                 } else {
-                    std::this_thread::sleep_for(std::chrono::milliseconds(100));
+                    std::this_thread::sleep_for(std::chrono::seconds(5));
                 }
             }
         });

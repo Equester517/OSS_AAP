@@ -1,0 +1,2 @@
+/usr/bin/ar qc libmotion_utils.a CMakeFiles/motion_utils.dir/src/trajectory.cpp.o
+/usr/bin/ranlib libmotion_utils.a

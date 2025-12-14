@@ -67,7 +67,7 @@ MPTOptimizer::MPTOptimizer(
 , state_equation_generator_(std::make_unique<StateEquationGenerator>(
     vehicle_info.wheel_base, vehicle_info.max_steer_angle))
 {
-  std::cout << "[MPTOptimizer] Initialized with state equation generator" << std::endl;
+  // std::cout << "[MPTOptimizer] Initialized with state equation generator" << std::endl;
 }
 
 MPTOptimizer::~MPTOptimizer() = default;
@@ -79,17 +79,17 @@ std::optional<std::vector<TrajectoryPoint>> MPTOptimizer::optimize(
   const Pose & ego_pose,
   const double ego_velocity)
 {
-  std::cout << "[MPTOptimizer] Starting optimization..." << std::endl;
+  // std::cout << "[MPTOptimizer] Starting optimization..." << std::endl;
   
   // 1. Generate reference points
   ref_points_ = generateReferencePoints(traj_points);
   
   if (ref_points_.empty()) {
-    std::cerr << "[MPTOptimizer] No reference points generated" << std::endl;
+    // std::cerr << "[MPTOptimizer] No reference points generated" << std::endl;
     return std::nullopt;
   }
   
-  std::cout << "  - Reference points: " << ref_points_.size() << std::endl;
+  // std::cout << "  - Reference points: " << ref_points_.size() << std::endl;
   
   // ⭐ 1.5. Apply fixed point mechanism (ROS2 temporal consistency)
   updateFixedPoint(ref_points_);
@@ -98,7 +98,7 @@ std::optional<std::vector<TrajectoryPoint>> MPTOptimizer::optimize(
   auto bounds = calculateBounds(ref_points_, left_bound, right_bound);
   
   if (bounds.empty()) {
-    std::cerr << "[MPTOptimizer] Failed to calculate bounds" << std::endl;
+    // std::cerr << "[MPTOptimizer] Failed to calculate bounds" << std::endl;
     return std::nullopt;
   }
   
@@ -125,8 +125,8 @@ std::optional<std::vector<TrajectoryPoint>> MPTOptimizer::optimize(
     while (ego_state.yaw > M_PI) ego_state.yaw -= 2.0 * M_PI;
     while (ego_state.yaw < -M_PI) ego_state.yaw += 2.0 * M_PI;
     
-    std::cout << "  - Ego initial state: lat=" << ego_state.lat 
-              << ", yaw=" << ego_state.yaw << " rad" << std::endl;
+    // std::cout << "  - Ego initial state: lat=" << ego_state.lat 
+    // << ", yaw=" << ego_state.yaw << " rad" << std::endl;
   } else {
     ego_state.lat = 0.0;
     ego_state.yaw = 0.0;
@@ -136,7 +136,7 @@ std::optional<std::vector<TrajectoryPoint>> MPTOptimizer::optimize(
   bool success = solveQP(ref_points_, bounds, ego_state);
   
   if (!success) {
-    std::cerr << "[MPTOptimizer] QP optimization failed" << std::endl;
+    // std::cerr << "[MPTOptimizer] QP optimization failed" << std::endl;
     return std::nullopt;
   }
   
@@ -146,9 +146,9 @@ std::optional<std::vector<TrajectoryPoint>> MPTOptimizer::optimize(
   // ⭐ 6. Save results for warm start and fixed point in next iteration
   prev_ref_points_ = ref_points_;
   has_prev_solution_ = true;
-  std::cout << "[MPTOptimizer] Saved previous solution for warm start" << std::endl;
+  // std::cout << "[MPTOptimizer] Saved previous solution for warm start" << std::endl;
   
-  std::cout << "[MPTOptimizer] Optimization successful" << std::endl;
+  // std::cout << "[MPTOptimizer] Optimization successful" << std::endl;
   
   return optimized_traj;
 }
@@ -289,13 +289,13 @@ std::vector<ReferencePoint> MPTOptimizer::generateReferencePoints(
     ref_points.push_back(ref_point);
   }
   
-  std::cout << "  [Spline] Generated " << ref_points.size() << " reference points" << std::endl;
-  std::cout << "  [Spline] Total path length: " << total_length << " m" << std::endl;
-  std::cout << "  [Spline] Average curvature (first 5): ";
+  // std::cout << "  [Spline] Generated " << ref_points.size() << " reference points" << std::endl;
+  // std::cout << "  [Spline] Total path length: " << total_length << " m" << std::endl;
+  // std::cout << "  [Spline] Average curvature (first 5): ";
   for (size_t i = 0; i < std::min(size_t(5), ref_points.size()); ++i) {
-    std::cout << ref_points[i].curvature << " ";
+    // std::cout << ref_points[i].curvature << " ";
   }
-  std::cout << std::endl;
+  // std::cout << std::endl;
   
   return ref_points;
 }
@@ -351,10 +351,10 @@ std::vector<Bounds> MPTOptimizer::calculateBounds(
   }
   
   // Debug: Print first few bounds
-  std::cout << "  - Bounds for first 3 points:" << std::endl;
+  // std::cout << "  - Bounds for first 3 points:" << std::endl;
   for (size_t i = 0; i < std::min(size_t(3), bounds.size()); ++i) {
-    std::cout << "    [" << i << "] lower=" << bounds[i].lower_bound 
-              << ", upper=" << bounds[i].upper_bound << std::endl;
+    // std::cout << "    [" << i << "] lower=" << bounds[i].lower_bound 
+    // << ", upper=" << bounds[i].upper_bound << std::endl;
   }
   
   return bounds;
@@ -373,19 +373,19 @@ bool MPTOptimizer::solveQP(
   // min: tracking_error + collision_avoidance + smoothness + center_bias
   // Solved with gradient descent instead of QP solver
   
-  std::cout << "[MPTOptimizer] Using ITERATIVE GRADIENT DESCENT optimization..." << std::endl;
+  // std::cout << "[MPTOptimizer] Using ITERATIVE GRADIENT DESCENT optimization..." << std::endl;
   
   const size_t N = ref_points.size();
   
   // Print first few bounds for debugging
-  std::cout << "  - Bounds for first 3 points:" << std::endl;
+  // std::cout << "  - Bounds for first 3 points:" << std::endl;
   for (size_t i = 0; i < std::min(size_t(3), N); ++i) {
-    std::cout << "    [" << i << "] lower=" << bounds[i].lower_bound 
-              << ", upper=" << bounds[i].upper_bound << std::endl;
+    // std::cout << "    [" << i << "] lower=" << bounds[i].lower_bound 
+    // << ", upper=" << bounds[i].upper_bound << std::endl;
   }
   
-  std::cout << "  - Ego initial state: lat=" << ego_state.lat 
-            << ", yaw=" << ego_state.yaw << " rad" << std::endl;
+  // std::cout << "  - Ego initial state: lat=" << ego_state.lat 
+  // << ", yaw=" << ego_state.yaw << " rad" << std::endl;
   
   // Decision variables: lateral offsets for each point
   std::vector<double> lateral_offsets(N);
@@ -404,10 +404,10 @@ bool MPTOptimizer::solveQP(
   const double w_smoothness = param_.steer_rate_weight * 5.0; // Smooth trajectory
   const double w_center_bias = 3.0;                           // Bias towards lane center in narrow lanes
   
-  std::cout << "  - Weights: tracking=" << w_tracking 
-            << ", collision=" << w_collision 
-            << ", smoothness=" << w_smoothness 
-            << ", center_bias=" << w_center_bias << std::endl;
+  // std::cout << "  - Weights: tracking=" << w_tracking 
+  // << ", collision=" << w_collision 
+  // << ", smoothness=" << w_smoothness 
+  // << ", center_bias=" << w_center_bias << std::endl;
   
   // Gradient descent parameters
   const int max_iterations = 150;
@@ -476,12 +476,12 @@ bool MPTOptimizer::solveQP(
     // Check convergence
     double cost_change = std::abs(total_cost - prev_cost);
     if (iter % 10 == 0) {
-      std::cout << "  - Iteration " << iter << ": cost=" << total_cost 
-                << ", change=" << cost_change << std::endl;
+      // std::cout << "  - Iteration " << iter << ": cost=" << total_cost 
+      // << ", change=" << cost_change << std::endl;
     }
     
     if (cost_change < convergence_threshold && iter > 10) {
-      std::cout << "  - Converged at iteration " << iter << std::endl;
+      // std::cout << "  - Converged at iteration " << iter << std::endl;
       break;
     }
     
@@ -505,18 +505,18 @@ bool MPTOptimizer::solveQP(
   }
   
   // Debug: print first few optimized values
-  std::cout << "  - First 5 optimized lateral offsets:" << std::endl;
+  // std::cout << "  - First 5 optimized lateral offsets:" << std::endl;
   for (size_t i = 0; i < std::min(size_t(5), N); ++i) {
-    std::cout << "    [" << i << "] lat=" << lateral_offsets[i] 
-              << ", bounds=[" << bounds[i].lower_bound << ", " << bounds[i].upper_bound << "]"
-              << std::endl;
+    // std::cout << "    [" << i << "] lat=" << lateral_offsets[i] 
+    // << ", bounds=[" << bounds[i].lower_bound << ", " << bounds[i].upper_bound << "]"
+    // << std::endl;
   }
   
-  std::cout << "[MPTOptimizer] Iterative optimization successful" << std::endl;
+  // std::cout << "[MPTOptimizer] Iterative optimization successful" << std::endl;
   return true;
   
 #elif defined(USE_OSQP)
-  std::cout << "[MPTOptimizer] Solving QP problem with OSQP..." << std::endl;
+  // std::cout << "[MPTOptimizer] Solving QP problem with OSQP..." << std::endl;
   
   const size_t N = ref_points.size();
   const size_t D_x = state_equation_generator_->getDimX();  // 2
@@ -526,11 +526,11 @@ bool MPTOptimizer::solveQP(
   auto mpt_mat = state_equation_generator_->calcMatrix(ref_points);
   
   // Debug: Check delta_arc_length values
-  std::cout << "  - Delta arc lengths (first 3): ";
+  // std::cout << "  - Delta arc lengths (first 3): ";
   for (size_t i = 0; i < std::min(size_t(3), ref_points.size()); ++i) {
-    std::cout << ref_points[i].delta_arc_length << " ";
+    // std::cout << ref_points[i].delta_arc_length << " ";
   }
-  std::cout << std::endl;
+  // std::cout << std::endl;
   
   const size_t N_x = N * D_x;      // Total state dimension
   const size_t N_u = (N - 1) * D_u;  // Total input dimension
@@ -682,27 +682,27 @@ bool MPTOptimizer::solveQP(
     g = B_dense.transpose() * Q_dense * error;
   }
   
-  std::cout << "  - Ego state: lat=" << ego_state.lat << ", yaw=" << ego_state.yaw << std::endl;
+  // std::cout << "  - Ego state: lat=" << ego_state.lat << ", yaw=" << ego_state.yaw << std::endl;
   
   // Debug initial state
-  std::cout << "  - Initial W (first 5 lateral states): ";
+  // std::cout << "  - Initial W (first 5 lateral states): ";
   for (size_t i = 0; i < std::min(size_t(5), N); ++i) {
-    std::cout << mpt_mat.W(i * D_x) << " ";
+    // std::cout << mpt_mat.W(i * D_x) << " ";
   }
-  std::cout << std::endl;
-  std::cout << "  - Initial W (first 5 yaw states): ";
+  // std::cout << std::endl;
+  // std::cout << "  - Initial W (first 5 yaw states): ";
   for (size_t i = 0; i < std::min(size_t(5), N); ++i) {
-    std::cout << mpt_mat.W(i * D_x + 1) << " ";
+    // std::cout << mpt_mat.W(i * D_x + 1) << " ";
   }
-  std::cout << std::endl;
+  // std::cout << std::endl;
   
   // Debug B matrix structure
-  std::cout << "  - B matrix size: " << mpt_mat.B.rows() << " x " << mpt_mat.B.cols() << std::endl;
+  // std::cout << "  - B matrix size: " << mpt_mat.B.rows() << " x " << mpt_mat.B.cols() << std::endl;
   if (mpt_mat.B.rows() >= 4 && mpt_mat.B.cols() >= 1) {
-    std::cout << "  - B[2:4, 0] (X[1] from U[0]): [" << mpt_mat.B(2, 0) << ", " << mpt_mat.B(3, 0) << "]" << std::endl;
+    // std::cout << "  - B[2:4, 0] (X[1] from U[0]): [" << mpt_mat.B(2, 0) << ", " << mpt_mat.B(3, 0) << "]" << std::endl;
   }
   if (mpt_mat.B.rows() >= 6 && mpt_mat.B.cols() >= 2) {
-    std::cout << "  - B[4:6, 1] (X[2] from U[1]): [" << mpt_mat.B(4, 1) << ", " << mpt_mat.B(5, 1) << "]" << std::endl;
+    // std::cout << "  - B[4:6, 1] (X[2] from U[1]): [" << mpt_mat.B(4, 1) << ", " << mpt_mat.B(5, 1) << "]" << std::endl;
   }
   
   // Build constraints
@@ -756,29 +756,29 @@ bool MPTOptimizer::solveQP(
   if (has_prev_solution_ && !prev_optimized_solution_.empty()) {
     // Check if dimensions match
     if (prev_optimized_solution_.size() == N_u) {
-      std::cout << "  - Applying warm start (size=" << prev_optimized_solution_.size() << ")" << std::endl;
+      // std::cout << "  - Applying warm start (size=" << prev_optimized_solution_.size() << ")" << std::endl;
       osqp.setWarmStart(prev_optimized_solution_);
     } else {
-      std::cout << "  - Warm start size mismatch: prev=" << prev_optimized_solution_.size()
-                << ", current=" << N_u << " - skip" << std::endl;
+      // std::cout << "  - Warm start size mismatch: prev=" << prev_optimized_solution_.size()
+      // << ", current=" << N_u << " - skip" << std::endl;
     }
   } else {
-    std::cout << "  - No warm start (first iteration)" << std::endl;
+    // std::cout << "  - No warm start (first iteration)" << std::endl;
   }
   
   // Solve
   auto [solution, dual, polish, status, iter] = osqp.optimize();
   
   if (status != 1) {  // OSQP_SOLVED
-    std::cerr << "[MPTOptimizer] OSQP failed with status: " << status << std::endl;
+    // std::cerr << "[MPTOptimizer] OSQP failed with status: " << status << std::endl;
     return false;
   }
   
-  std::cout << "  - OSQP solved in " << iter << " iterations" << std::endl;
+  // std::cout << "  - OSQP solved in " << iter << " iterations" << std::endl;
   
   // ⭐ Save solution for warm start in next iteration
   prev_optimized_solution_ = solution;
-  std::cout << "  - Saved solution for warm start (size=" << solution.size() << ")" << std::endl;
+  // std::cout << "  - Saved solution for warm start (size=" << solution.size() << ")" << std::endl;
   
   // Convert solution to states: X = B*U + W
   Eigen::VectorXd U(N_u);
@@ -799,19 +799,19 @@ bool MPTOptimizer::solveQP(
   }
   
   // Debug: Print first few optimized values
-  std::cout << "  - First 5 optimized lateral offsets:" << std::endl;
+  // std::cout << "  - First 5 optimized lateral offsets:" << std::endl;
   for (size_t i = 0; i < std::min(size_t(5), N); ++i) {
-    std::cout << "    [" << i << "] lat=" << ref_points[i].optimized_kinematic_state.lat 
-              << ", yaw=" << ref_points[i].optimized_kinematic_state.yaw 
-              << ", ref_x=" << ref_points[i].pose.position.x << std::endl;
+    // std::cout << "    [" << i << "] lat=" << ref_points[i].optimized_kinematic_state.lat 
+    // << ", yaw=" << ref_points[i].optimized_kinematic_state.yaw 
+    // << ", ref_x=" << ref_points[i].pose.position.x << std::endl;
   }
   
   return true;
   
 #else
   // Simplified QP solver - fallback when OSQP not available
-  std::cout << "[MPTOptimizer] Solving QP problem (simplified solver)..." << std::endl;
-  std::cout << "  - Note: OSQP not available, using simplified solver" << std::endl;
+  // std::cout << "[MPTOptimizer] Solving QP problem (simplified solver)..." << std::endl;
+  // std::cout << "  - Note: OSQP not available, using simplified solver" << std::endl;
   
   for (size_t i = 0; i < ref_points.size(); ++i) {
     // Keep points within bounds
@@ -887,7 +887,7 @@ void MPTOptimizer::updateFixedPoint(
   // ROS2의 핵심 메커니즘: 이전 optimization 결과를 첫 점에 적용하여 temporal consistency 유지
   if (!has_prev_solution_ || prev_ref_points_.empty()) {
     // No previous data - skip fixed point
-    std::cout << "[MPTOptimizer] No previous data - skip fixed point" << std::endl;
+    // std::cout << "[MPTOptimizer] No previous data - skip fixed point" << std::endl;
     return;
   }
   
@@ -916,17 +916,17 @@ void MPTOptimizer::updateFixedPoint(
   
   // If closest point is nearby (< 1.0m), use it as fixed point
   if (min_dist < 1.0) {
-    std::cout << "[MPTOptimizer] Fixed point: using prev[" << closest_idx 
-              << "] (dist=" << min_dist << "m)" << std::endl;
+    // std::cout << "[MPTOptimizer] Fixed point: using prev[" << closest_idx 
+    // << "] (dist=" << min_dist << "m)" << std::endl;
     
     // ⭐ Replace first point's pose and optimized state
     ref_points[0].pose = prev_ref_points_[closest_idx].pose;
     ref_points[0].optimized_kinematic_state = prev_ref_points_[closest_idx].optimized_kinematic_state;
     
-    std::cout << "    -> lat=" << ref_points[0].optimized_kinematic_state.lat
-              << ", yaw=" << ref_points[0].optimized_kinematic_state.yaw << std::endl;
+    // std::cout << "    -> lat=" << ref_points[0].optimized_kinematic_state.lat
+    // << ", yaw=" << ref_points[0].optimized_kinematic_state.yaw << std::endl;
   } else {
-    std::cout << "[MPTOptimizer] Fixed point: prev too far (" << min_dist << "m) - skip" << std::endl;
+    // std::cout << "[MPTOptimizer] Fixed point: prev too far (" << min_dist << "m) - skip" << std::endl;
   }
 }
 

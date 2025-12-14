@@ -37,10 +37,10 @@ PathOptimizer::PathOptimizer(
   mpt_optimizer_ = std::make_unique<MPTOptimizer>(param_.mpt, vehicle_info_);
   replan_checker_ = std::make_unique<ReplanChecker>(param_.replan_checker);
   
-  std::cout << "[PathOptimizer] Initialized with:" << std::endl;
-  std::cout << "  - Vehicle wheelbase: " << vehicle_info_.wheel_base << " m" << std::endl;
-  std::cout << "  - Max steer angle: " << vehicle_info_.max_steer_angle << " rad" << std::endl;
-  std::cout << "  - MPT num points: " << param_.mpt.num_points << std::endl;
+  // std::cout << "[PathOptimizer] Initialized with:" << std::endl;
+  // std::cout << "  - Vehicle wheelbase: " << vehicle_info_.wheel_base << " m" << std::endl;
+  // std::cout << "  - Max steer angle: " << vehicle_info_.max_steer_angle << " rad" << std::endl;
+  // std::cout << "  - MPT num points: " << param_.mpt.num_points << std::endl;
 }
 
 PathOptimizer::~PathOptimizer() = default;
@@ -75,7 +75,7 @@ OptimizationResult PathOptimizer::optimizePathWithDebug(
   
   if (planner_data.traj_points.empty()) {
     result.error_message = "No trajectory points to optimize";
-    std::cerr << "[PathOptimizer] " << result.error_message << std::endl;
+    // std::cerr << "[PathOptimizer] " << result.error_message << std::endl;
     return result;
   }
   
@@ -86,8 +86,8 @@ OptimizationResult PathOptimizer::optimizePathWithDebug(
       planner_data.traj_points, ego_pose, 0.0);  // time=0 for standalone
   }
   
-  std::cout << "[PathOptimizer] Replan required: " 
-            << (need_replan ? "YES" : "NO") << std::endl;
+  // std::cout << "[PathOptimizer] Replan required: " 
+  // << (need_replan ? "YES" : "NO") << std::endl;
   
   // 3. Optimize trajectory
   std::optional<std::vector<TrajectoryPoint>> optimized_traj;
@@ -106,7 +106,7 @@ OptimizationResult PathOptimizer::optimizePathWithDebug(
       result.success = true;
     } else {
       result.error_message = "Optimization failed";
-      std::cerr << "[PathOptimizer] " << result.error_message << std::endl;
+      // std::cerr << "[PathOptimizer] " << result.error_message << std::endl;
       
       // Use previous trajectory if available
       if (!prev_optimized_traj_.empty()) {
@@ -143,10 +143,10 @@ OptimizationResult PathOptimizer::optimizePathWithDebug(
   result.computation_time_ms = std::chrono::duration_cast<std::chrono::milliseconds>(
     end_time - start_time).count();
   
-  std::cout << "[PathOptimizer] Optimization completed in " 
-            << result.computation_time_ms << " ms" << std::endl;
-  std::cout << "  - Input points: " << path_points.size() << std::endl;
-  std::cout << "  - Output points: " << result.trajectory.size() << std::endl;
+  // std::cout << "[PathOptimizer] Optimization completed in " 
+  // << result.computation_time_ms << " ms" << std::endl;
+  // std::cout << "  - Input points: " << path_points.size() << std::endl;
+  // std::cout << "  - Output points: " << result.trajectory.size() << std::endl;
   
   return result;
 }

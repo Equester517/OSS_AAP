@@ -49,8 +49,8 @@ OdometryData loadOdometryFromCSV(const std::string & filename)
   std::ifstream file(filename);
   
   if (!file.is_open()) {
-    std::cerr << "Failed to open odometry file: " << filename << std::endl;
-    std::cerr << "Using default values: pos=(0,0), vel=5.0 m/s" << std::endl;
+    // std::cerr << "Failed to open odometry file: " << filename << std::endl;
+    // std::cerr << "Using default values: pos=(0,0), vel=5.0 m/s" << std::endl;
     return odom;
   }
   
@@ -84,12 +84,12 @@ OdometryData loadOdometryFromCSV(const std::string & filename)
       // tokens[11] is wy (not used)
       odom.angular_velocity_z = std::stod(tokens[12]);
       
-      std::cout << "Loaded odometry from " << filename << std::endl;
-      std::cout << "  Position: (" << odom.pose.position.x << ", " 
-                << odom.pose.position.y << ")" << std::endl;
-      std::cout << "  Velocity: " << odom.linear_velocity_x << " m/s" << std::endl;
+      // std::cout << "Loaded odometry from " << filename << std::endl;
+      // std::cout << "  Position: (" << odom.pose.position.x << ", " 
+      // << odom.pose.position.y << ")" << std::endl;
+      // std::cout << "  Velocity: " << odom.linear_velocity_x << " m/s" << std::endl;
     } else {
-      std::cerr << "Invalid odometry format (expected 13 columns)" << std::endl;
+      // std::cerr << "Invalid odometry format (expected 13 columns)" << std::endl;
     }
   }
   
@@ -103,7 +103,7 @@ std::vector<PathPoint> loadPathFromCSV(const std::string & filename)
   std::ifstream file(filename);
   
   if (!file.is_open()) {
-    std::cerr << "Failed to open file: " << filename << std::endl;
+    // std::cerr << "Failed to open file: " << filename << std::endl;
     return points;
   }
   
@@ -150,7 +150,7 @@ std::vector<PathPoint> loadPathFromCSV(const std::string & filename)
     }
   }
   
-  std::cout << "Loaded " << points.size() << " path points from " << filename << std::endl;
+  // std::cout << "Loaded " << points.size() << " path points from " << filename << std::endl;
   return points;
 }
 
@@ -161,7 +161,7 @@ std::vector<Point> loadBoundFromCSV(const std::string & filename)
   std::ifstream file(filename);
   
   if (!file.is_open()) {
-    std::cerr << "Failed to open file: " << filename << std::endl;
+    // std::cerr << "Failed to open file: " << filename << std::endl;
     return points;
   }
   
@@ -196,7 +196,7 @@ std::vector<Point> loadBoundFromCSV(const std::string & filename)
     }
   }
   
-  std::cout << "Loaded " << points.size() << " bound points from " << filename << std::endl;
+  // std::cout << "Loaded " << points.size() << " bound points from " << filename << std::endl;
   return points;
 }
 
@@ -208,7 +208,7 @@ void saveTrajectoryToCSV(
   std::ofstream file(filename);
   
   if (!file.is_open()) {
-    std::cerr << "Failed to open file for writing: " << filename << std::endl;
+    // std::cerr << "Failed to open file for writing: " << filename << std::endl;
     return;
   }
   
@@ -232,7 +232,7 @@ void saveTrajectoryToCSV(
          << point.rear_wheel_angle_rad << "\n";
   }
   
-  std::cout << "Saved " << trajectory.size() << " trajectory points to " << filename << std::endl;
+  // std::cout << "Saved " << trajectory.size() << " trajectory points to " << filename << std::endl;
 }
 
 // Generate simple test data
@@ -276,20 +276,20 @@ void generateTestData()
   }
   right_file.close();
   
-  std::cout << "Generated test data files" << std::endl;
+  // std::cout << "Generated test data files" << std::endl;
 }
 
 int main(int argc, char ** argv)
 {
-  std::cout << "=== Path Optimizer Standalone ===" << std::endl;
+  // std::cout << "=== Path Optimizer Standalone ===" << std::endl;
   
   // Check arguments
   if (argc < 2) {
-    std::cout << "Generating test data..." << std::endl;
+    // std::cout << "Generating test data..." << std::endl;
     generateTestData();
     
-    std::cout << "\nUsage: " << argv[0] << " <path.csv> <odometry.csv> [left_bound.csv] [right_bound.csv]" << std::endl;
-    std::cout << "Using generated test data..." << std::endl;
+    // std::cout << "\nUsage: " << argv[0] << " <path.csv> <odometry.csv> [left_bound.csv] [right_bound.csv]" << std::endl;
+    // std::cout << "Using generated test data..." << std::endl;
     
     argc = 4;
     char* test_argv[] = {
@@ -302,7 +302,7 @@ int main(int argc, char ** argv)
   }
   
   // 1. Load data
-  std::cout << "\n=== Loading Data ===" << std::endl;
+  // std::cout << "\n=== Loading Data ===" << std::endl;
   
   std::string path_file = argv[1];
   std::string odometry_file = argc > 2 ? argv[2] : "test_odometry.csv";
@@ -315,12 +315,12 @@ int main(int argc, char ** argv)
   auto right_bound = loadBoundFromCSV(right_bound_file);
   
   if (path_points.empty()) {
-    std::cerr << "No path points loaded!" << std::endl;
+    // std::cerr << "No path points loaded!" << std::endl;
     return 1;
   }
   
   // 2. Setup parameters
-  std::cout << "\n=== Setting Up Parameters ===" << std::endl;
+  // std::cout << "\n=== Setting Up Parameters ===" << std::endl;
   
   PathOptimizerParam param;
   param.trajectory.output_delta_arc_length = 0.5;
@@ -355,10 +355,10 @@ int main(int argc, char ** argv)
   param.replan_checker.max_ego_moving_dist = 5.0;
   param.replan_checker.max_delta_time_sec = 2.0;
   
-  std::cout << "Parameters configured" << std::endl;
+  // std::cout << "Parameters configured" << std::endl;
   
   // 3. Create optimizer
-  std::cout << "\n=== Creating Path Optimizer ===" << std::endl;
+  // std::cout << "\n=== Creating Path Optimizer ===" << std::endl;
   
   PathOptimizer optimizer(param, vehicle_info);
   
@@ -366,17 +366,17 @@ int main(int argc, char ** argv)
   Pose ego_pose = odom_data.pose;
   double ego_velocity = odom_data.linear_velocity_x;  // m/s (from test_odometry.csv)
   
-  std::cout << "\n=== Ego State (from odometry file) ===" << std::endl;
-  std::cout << "Ego pose: (" << ego_pose.position.x << ", " 
-            << ego_pose.position.y << ")" << std::endl;
-  std::cout << "Ego velocity: " << ego_velocity << " m/s" << std::endl;
+  // std::cout << "\n=== Ego State (from odometry file) ===" << std::endl;
+  // std::cout << "Ego pose: (" << ego_pose.position.x << ", " 
+  // << ego_pose.position.y << ")" << std::endl;
+  // std::cout << "Ego velocity: " << ego_velocity << " m/s" << std::endl;
   
   // Calculate yaw from quaternion for display
   double ego_yaw = 2.0 * std::atan2(ego_pose.orientation.z, ego_pose.orientation.w);
-  std::cout << "Ego yaw: " << ego_yaw << " rad (" << (ego_yaw * 180.0 / M_PI) << " deg)" << std::endl;
+  // std::cout << "Ego yaw: " << ego_yaw << " rad (" << (ego_yaw * 180.0 / M_PI) << " deg)" << std::endl;
   
   // 5. Optimize path with ITERATIVE REFINEMENT (ROS2 방식)
-  std::cout << "\n=== Optimizing Path (Iterative Refinement) ===" << std::endl;
+  // std::cout << "\n=== Optimizing Path (Iterative Refinement) ===" << std::endl;
   
   // ⭐⭐⭐ IMPORTANT: Single-shot optimization for ROS2 compatibility
   // ROS2는 한 번의 최적화만 수행하므로, Standalone도 동일하게 1회만 수행합니다.
@@ -388,40 +388,40 @@ int main(int argc, char ** argv)
   Pose current_ego_pose = ego_pose;
   
   for (int iter = 0; iter < num_iterations; ++iter) {
-    std::cout << "\n--- Iteration " << (iter + 1) << "/" << num_iterations << " ---" << std::endl;
-    std::cout << "  Current ego: (" << current_ego_pose.position.x 
-              << ", " << current_ego_pose.position.y << ")" << std::endl;
+    // std::cout << "\n--- Iteration " << (iter + 1) << "/" << num_iterations << " ---" << std::endl;
+    // std::cout << "  Current ego: (" << current_ego_pose.position.x 
+    // << ", " << current_ego_pose.position.y << ")" << std::endl;
     
     result = optimizer.optimizePathWithDebug(
       path_points, left_bound, right_bound, current_ego_pose, ego_velocity);
     
     if (!result.success) {
-      std::cerr << "Optimization failed at iteration " << (iter + 1) << std::endl;
+      // std::cerr << "Optimization failed at iteration " << (iter + 1) << std::endl;
       if (iter > 0) {
         // 이전 결과 사용
-        std::cout << "Using previous iteration result" << std::endl;
+        // std::cout << "Using previous iteration result" << std::endl;
       }
       break;
     }
     
-    std::cout << "  Computation time: " << result.computation_time_ms << " ms" << std::endl;
-    std::cout << "  Output points: " << result.trajectory.size() << std::endl;
+    // std::cout << "  Computation time: " << result.computation_time_ms << " ms" << std::endl;
+    // std::cout << "  Output points: " << result.trajectory.size() << std::endl;
     
     // 첫 몇 점의 lateral offset 확인 (수렴 모니터링)
     if (!result.reference_points.empty()) {
-      std::cout << "  First point lat_offset: " 
-                << result.reference_points[0].optimized_kinematic_state.lat << " m" << std::endl;
+      // std::cout << "  First point lat_offset: " 
+      // << result.reference_points[0].optimized_kinematic_state.lat << " m" << std::endl;
       
       if (result.reference_points.size() > 4) {
-        std::cout << "  Point[3] lat_offset: " 
-                  << result.reference_points[3].optimized_kinematic_state.lat << " m" << std::endl;
+        // std::cout << "  Point[3] lat_offset: " 
+        // << result.reference_points[3].optimized_kinematic_state.lat << " m" << std::endl;
       }
       
       // First optimized point position (global coordinates)
       const auto & first_opt_pt = result.trajectory.front();
-      std::cout << "  First optimized point global: (" 
-                << first_opt_pt.pose.position.x << ", " 
-                << first_opt_pt.pose.position.y << ")" << std::endl;
+      // std::cout << "  First optimized point global: (" 
+      // << first_opt_pt.pose.position.x << ", " 
+      // << first_opt_pt.pose.position.y << ")" << std::endl;
     }
     
     // 다음 iteration을 위해: optimized trajectory를 PathPoint로 변환하여 다음 입력으로
@@ -446,21 +446,21 @@ int main(int argc, char ** argv)
         current_ego_pose = result.trajectory.front().pose;
       }
       
-      std::cout << "  -> Using optimized result as next input (converging...)" << std::endl;
-      std::cout << "  -> Ego advanced to step " << ego_advance_steps 
-                << ": (" << current_ego_pose.position.x 
-                << ", " << current_ego_pose.position.y << ")" << std::endl;
+      // std::cout << "  -> Using optimized result as next input (converging...)" << std::endl;
+      // std::cout << "  -> Ego advanced to step " << ego_advance_steps 
+      // << ": (" << current_ego_pose.position.x 
+      // << ", " << current_ego_pose.position.y << ")" << std::endl;
     }
   }
   
   // 6. Print results
-  std::cout << "\n=== Optimization Results ===" << std::endl;
-  std::cout << "Success: " << (result.success ? "YES" : "NO") << std::endl;
-  std::cout << "Computation time: " << result.computation_time_ms << " ms" << std::endl;
-  std::cout << "Output points: " << result.trajectory.size() << std::endl;
+  // std::cout << "\n=== Optimization Results ===" << std::endl;
+  // std::cout << "Success: " << (result.success ? "YES" : "NO") << std::endl;
+  // std::cout << "Computation time: " << result.computation_time_ms << " ms" << std::endl;
+  // std::cout << "Output points: " << result.trajectory.size() << std::endl;
   
   if (!result.error_message.empty()) {
-    std::cout << "Message: " << result.error_message << std::endl;
+    // std::cout << "Message: " << result.error_message << std::endl;
   }
   
   if (!result.trajectory.empty()) {
@@ -469,33 +469,33 @@ int main(int argc, char ** argv)
     
     // Print reference points (optimized before resampling)
     if (!result.reference_points.empty()) {
-      std::cout << "\nFirst 5 reference points (optimized, before resampling):" << std::endl;
+      // std::cout << "\nFirst 5 reference points (optimized, before resampling):" << std::endl;
       for (size_t i = 0; i < std::min(size_t(5), result.reference_points.size()); ++i) {
         const auto & p = result.reference_points[i];
         double yaw = 2.0 * std::atan2(p.pose.orientation.z, p.pose.orientation.w);
         
-        std::cout << "  [" << i << "] x=" << p.pose.position.x 
-                  << ", y=" << p.pose.position.y
-                  << ", lat_offset=" << p.optimized_kinematic_state.lat
-                  << ", yaw_error=" << p.optimized_kinematic_state.yaw
-                  << ", v=" << p.longitudinal_velocity_mps << " m/s" << std::endl;
+        // std::cout << "  [" << i << "] x=" << p.pose.position.x 
+        // << ", y=" << p.pose.position.y
+        // << ", lat_offset=" << p.optimized_kinematic_state.lat
+        // << ", yaw_error=" << p.optimized_kinematic_state.yaw
+        // << ", v=" << p.longitudinal_velocity_mps << " m/s" << std::endl;
       }
     }
     
     // Print first few points
-    std::cout << "\nFirst 5 optimized points (final, after resampling):" << std::endl;
+    // std::cout << "\nFirst 5 optimized points (final, after resampling):" << std::endl;
     for (size_t i = 0; i < std::min(size_t(5), result.trajectory.size()); ++i) {
       const auto & p = result.trajectory[i];
       double yaw = 2.0 * std::atan2(p.pose.orientation.z, p.pose.orientation.w);
       
-      std::cout << "  [" << i << "] x=" << p.pose.position.x 
-                << ", y=" << p.pose.position.y
-                << ", yaw=" << yaw
-                << ", v=" << p.longitudinal_velocity_mps << " m/s" << std::endl;
+      // std::cout << "  [" << i << "] x=" << p.pose.position.x 
+      // << ", y=" << p.pose.position.y
+      // << ", yaw=" << yaw
+      // << ", v=" << p.longitudinal_velocity_mps << " m/s" << std::endl;
     }
   }
   
-  std::cout << "\n=== Done ===" << std::endl;
+  // std::cout << "\n=== Done ===" << std::endl;
   
   return 0;
 }

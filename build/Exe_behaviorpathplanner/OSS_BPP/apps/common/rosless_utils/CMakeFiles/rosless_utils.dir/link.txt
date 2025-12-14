@@ -1,0 +1,2 @@
+/usr/bin/ar qc librosless_utils.a CMakeFiles/rosless_utils.dir/src/bpp_path_utils.cpp.o CMakeFiles/rosless_utils.dir/src/drivable_area.cpp.o CMakeFiles/rosless_utils.dir/src/resample.cpp.o
+/usr/bin/ranlib librosless_utils.a

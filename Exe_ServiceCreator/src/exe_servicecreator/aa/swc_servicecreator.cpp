@@ -77,13 +77,14 @@ bool Swc_ServiceCreator::Initialize()
     m_PPort_SCr2OCP = std::make_unique<exe_servicecreator::aa::port::PPort_SCr2OCP>();
     // RPort to receive from OCP (scenario, trajectory)
     m_RPort_OCP2SCr = std::make_unique<exe_servicecreator::aa::port::RPort_OCP2SCr>();
+    m_PPort_SCr2BVP = std::make_unique<exe_servicecreator::aa::port::PPort_SCr2BVP>();
+    m_PPort_SCr2MVP = std::make_unique<exe_servicecreator::aa::port::PPort_SCr2MVP>();
 
-    // m_PPort_SCr2BVP = std::make_unique<exe_servicecreator::aa::port::PPort_SCr2BVP>();
+
     // m_PPort_SCr2CG = std::make_unique<exe_servicecreator::aa::port::PPort_SCr2CG>();
     // m_PPort_SCr2EVLS = std::make_unique<exe_servicecreator::aa::port::PPort_SCr2EVLS>();
     // m_PPort_SCr2FP = std::make_unique<exe_servicecreator::aa::port::PPort_SCr2FP>();
     // m_PPort_SCr2GPV = std::make_unique<exe_servicecreator::aa::port::PPort_SCr2GPV>();
-    // m_PPort_SCr2MVP = std::make_unique<exe_servicecreator::aa::port::PPort_SCr2MVP>();
     // m_PPort_SCr2PE = std::make_unique<exe_servicecreator::aa::port::PPort_SCr2PE>();
     // m_PPort_SCr2PV = std::make_unique<exe_servicecreator::aa::port::PPort_SCr2PV>();
     // m_PPort_SCr2RS = std::make_unique<exe_servicecreator::aa::port::PPort_SCr2RS>();
@@ -201,12 +202,14 @@ void Swc_ServiceCreator::Start()
         
     }).detach();
 
-    // m_PPort_SCr2BVP->Start();
+    m_PPort_SCr2BVP->Start();
+    m_PPort_SCr2MVP->Start();
+
+
     // m_PPort_SCr2CG->Start();
     // m_PPort_SCr2EVLS->Start();
     // m_PPort_SCr2FP->Start();
     // m_PPort_SCr2GPV->Start();
-    // m_PPort_SCr2MVP->Start();
     // m_PPort_SCr2PE->Start();
     // m_PPort_SCr2PV->Start();
     // m_PPort_SCr2RS->Start();
@@ -238,12 +241,13 @@ void Swc_ServiceCreator::Terminate()
     m_RPort_MP2SCr->Terminate();
     m_PPort_SCr2BPP->Terminate();
     
-    // m_PPort_SCr2BVP->Terminate();
+    m_PPort_SCr2BVP->Terminate();
+    m_PPort_SCr2MVP->Terminate();
+
     // m_PPort_SCr2CG->Terminate();
     // m_PPort_SCr2EVLS->Terminate();
     // m_PPort_SCr2FP->Terminate();
     // m_PPort_SCr2GPV->Terminate();
-    // m_PPort_SCr2MVP->Terminate();
     // m_PPort_SCr2OCP->Terminate();
     // m_PPort_SCr2PE->Terminate();
     // m_PPort_SCr2PV->Terminate();
@@ -259,7 +263,7 @@ void Swc_ServiceCreator::Run()
 
     // m_workers.Async([this] { m_PPort_SCr2EBS->SendEventclockCyclic(); });
     // m_workers.Async([this] { m_PPort_SCr2EBS->SendEventlocalization_accelerationCyclic(); });
-    // m_workers.Async([this] { m_PPort_SCr2EBS->SendEventlocalization_kinematicstateCyclic(); });
+    m_workers.Async([this] { m_PPort_SCr2EBS->SendEventlocalization_kinematicstateCyclic(); });
     // m_workers.Async([this] { m_PPort_SCr2EBS->SendEventmap_vectormapCyclic(); });
     // m_workers.Async([this] { m_PPort_SCr2EBS->SendEventperception_objectrecognition_objectsCyclic(); });
     // m_workers.Async([this] { m_PPort_SCr2EBS->SendEventperception_obstaclesegmentation_pointcloudCyclic(); });
@@ -273,7 +277,7 @@ void Swc_ServiceCreator::Run()
     
     // m_workers.Async([this] { m_PPort_SCr2PO->SendEventclockCyclic(); });
     // m_workers.Async([this] { m_PPort_SCr2PO->SendEventlocalization_accelerationCyclic(); });
-    // m_workers.Async([this] { m_PPort_SCr2PO->SendEventlocalization_kinematicstateCyclic(); });
+    m_workers.Async([this] { m_PPort_SCr2PO->SendEventlocalization_kinematicstateCyclic(); });
     // m_workers.Async([this] { m_PPort_SCr2PO->SendEventmap_vectormapCyclic(); });
     // m_workers.Async([this] { m_PPort_SCr2PO->SendEventperception_objectrecognition_objectsCyclic(); });
     // m_workers.Async([this] { m_PPort_SCr2PO->SendEventperception_obstaclesegmentation_pointcloudCyclic(); });
@@ -283,7 +287,7 @@ void Swc_ServiceCreator::Run()
     // m_workers.Async([this] { m_PPort_SCr2PO->SendEventplanning_scenarioplanning_maxvelocitydefaultCyclic(); });
     // m_workers.Async([this] { m_PPort_SCr2PO->SendEventsystem_operationmode_stateCyclic(); });
 
-    // m_workers.Async([this] { m_PPort_SCr2BPP->SendEventlocalization_kinematicstateCyclic(); }); 
+    m_workers.Async([this] { m_PPort_SCr2BPP->SendEventlocalization_kinematicstateCyclic(); }); 
 
     // Receive scenario/trajectory from OCP cyclic handlers
     // m_workers.Async([this] { m_RPort_OCP2SCr->ReceiveEventscenarioCyclic(); });
@@ -300,9 +304,10 @@ void Swc_ServiceCreator::Run()
     // m_workers.Async([this] { m_PPort_SCr2BPP->SendEventplanning_scenarioplanning_lanedriving_behaviorplanning_behaviorpathplanner_input_lateraloffsetCyclic(); });
     // m_workers.Async([this] { m_PPort_SCr2BPP->SendEventplanning_scenarioplanning_maxvelocitydefaultCyclic(); });
     // m_workers.Async([this] { m_PPort_SCr2BPP->SendEventsystem_operationmode_stateCyclic(); });
+
     // m_workers.Async([this] { m_PPort_SCr2BVP->SendEventclockCyclic(); });
     // m_workers.Async([this] { m_PPort_SCr2BVP->SendEventlocalization_accelerationCyclic(); });
-    // m_workers.Async([this] { m_PPort_SCr2BVP->SendEventlocalization_kinematicstateCyclic(); });
+    m_workers.Async([this] { m_PPort_SCr2BVP->SendEventlocalization_kinematicstateCyclic(); });
     // m_workers.Async([this] { m_PPort_SCr2BVP->SendEventmap_vectormapCyclic(); });
     // m_workers.Async([this] { m_PPort_SCr2BVP->SendEventperception_objectrecognition_objectsCyclic(); });
     // m_workers.Async([this] { m_PPort_SCr2BVP->SendEventperception_obstaclesegmentation_pointcloudCyclic(); });
@@ -311,6 +316,7 @@ void Swc_ServiceCreator::Run()
     // m_workers.Async([this] { m_PPort_SCr2BVP->SendEventplanning_scenarioplanning_lanedriving_behaviorplanning_behaviorpathplanner_input_lateraloffsetCyclic(); });
     // m_workers.Async([this] { m_PPort_SCr2BVP->SendEventplanning_scenarioplanning_maxvelocitydefaultCyclic(); });
     // m_workers.Async([this] { m_PPort_SCr2BVP->SendEventsystem_operationmode_stateCyclic(); });
+
     // m_workers.Async([this] { m_PPort_SCr2CG->SendEventclockCyclic(); });
     // m_workers.Async([this] { m_PPort_SCr2CG->SendEventlocalization_accelerationCyclic(); });
     // m_workers.Async([this] { m_PPort_SCr2CG->SendEventlocalization_kinematicstateCyclic(); });
@@ -359,7 +365,7 @@ void Swc_ServiceCreator::Run()
 
     // m_workers.Async([this] { m_PPort_SCr2MVP->SendEventclockCyclic(); });
     // m_workers.Async([this] { m_PPort_SCr2MVP->SendEventlocalization_accelerationCyclic(); });
-    // m_workers.Async([this] { m_PPort_SCr2MVP->SendEventlocalization_kinematicstateCyclic(); });
+    m_workers.Async([this] { m_PPort_SCr2MVP->SendEventlocalization_kinematicstateCyclic(); });
     // m_workers.Async([this] { m_PPort_SCr2MVP->SendEventmap_vectormapCyclic(); });
     // m_workers.Async([this] { m_PPort_SCr2MVP->SendEventperception_objectrecognition_objectsCyclic(); });
     // m_workers.Async([this] { m_PPort_SCr2MVP->SendEventperception_obstaclesegmentation_pointcloudCyclic(); });
@@ -436,6 +442,11 @@ void Swc_ServiceCreator::Run()
     // m_workers.Async([this] { m_PPort_SCr2VS->SendEventplanning_scenarioplanning_maxvelocitydefaultCyclic(); });
     // m_workers.Async([this] { m_PPort_SCr2VS->SendEventsystem_operationmode_stateCyclic(); });
     // m_workers.Async([this] { m_RPort_PV2SCr->ReceiveEventplanning_scenarioplanning_trajectoryCyclic(); });
+    
+    // Sleep loop: repeat 1 second sleep
+    while (true) {
+        std::this_thread::sleep_for(std::chrono::seconds(1));
+    }
     
     m_workers.Wait();
 }
@@ -560,7 +571,7 @@ void Swc_ServiceCreator::SocketConnectLoop()
                 struct sockaddr_in peer{};
                 socklen_t len = sizeof(peer);
                 if (::getpeername(m_socket_fd, reinterpret_cast<struct sockaddr*>(&peer), &len) == 0) {
-                    m_logger.LogDebug() << "Swc_ServiceCreator::Socket heartbeat: connected";
+                    // m_logger.LogDebug() << "Swc_ServiceCreator::Socket heartbeat: connected";
                 } else {
                     m_logger.LogWarn() << "Swc_ServiceCreator::Socket heartbeat: not connected, will reconnect";
                     m_socket_connected.store(false);

@@ -99,7 +99,7 @@ void Swc_behaviorpathplanner::Start()
 #endif
     osm_candidates.emplace_back(repo_default);
     osm_candidates.emplace_back("../" + repo_default); // common when running from build/install/bin
-    osm_candidates.emplace_back("/home/katech/AAP/only_missionplanner/" + repo_default); // absolute repo root
+    osm_candidates.emplace_back("/home/katech/AAP/OSS_AAP/" + repo_default); // absolute repo root
     osm_candidates.emplace_back("/home/katech/AAP/Exe_behaviorpathplanner/OSS_BPP/sample-map-planning/lanelet2_map.osm"); // legacy absolute path
 
     std::string osm_path;
@@ -155,7 +155,7 @@ void Swc_behaviorpathplanner::Start()
             }
             
             // Wait before next iteration
-            std::this_thread::sleep_for(std::chrono::milliseconds(500));
+            std::this_thread::sleep_for(std::chrono::milliseconds(5000));
         }
         
         m_logger.LogInfo() << "Swc_behaviorpathplanner::BPP runner thread finished";
@@ -191,20 +191,25 @@ void Swc_behaviorpathplanner::Run()
     // start running
     m_running = true;
     
-    m_workers.Async([this] { m_PPort_BPP2BVP->SendEventplanning_scenarioplanning_lanedriving_behaviorplanning_pathwithlaneidCyclic(); });
+    // m_workers.Async([this] { m_PPort_BPP2BVP->SendEventplanning_scenarioplanning_lanedriving_behaviorplanning_pathwithlaneidCyclic(); });
     // Note: route uses triggered callback, not cyclic polling
-    m_workers.Async([this] { m_RPort_SCr2BPP->ReceiveEventclockCyclic(); });
-    m_workers.Async([this] { m_RPort_SCr2BPP->ReceiveEventlocalization_accelerationCyclic(); });
+    // m_workers.Async([this] { m_RPort_SCr2BPP->ReceiveEventclockCyclic(); });
+    // m_workers.Async([this] { m_RPort_SCr2BPP->ReceiveEventlocalization_accelerationCyclic(); });
     // Note: kinematic_state uses triggered callback, not cyclic polling
-    m_workers.Async([this] { m_RPort_SCr2BPP->ReceiveEventmap_vectormapCyclic(); });
-    m_workers.Async([this] { m_RPort_SCr2BPP->ReceiveEventperception_objectrecognition_objectsCyclic(); });
-    m_workers.Async([this] { m_RPort_SCr2BPP->ReceiveEventperception_obstaclesegmentation_pointcloudCyclic(); });
-    m_workers.Async([this] { m_RPort_SCr2BPP->ReceiveEventperception_occupancygridmap_mapCyclic(); });
-    m_workers.Async([this] { m_RPort_SCr2BPP->ReceiveEventperception_trafficlightrecognition_trafficsignalsCyclic(); });
-    m_workers.Async([this] { m_RPort_SCr2BPP->ReceiveEventplanning_scenarioplanning_lanedriving_behaviorplanning_behaviorpathplanner_input_lateraloffsetCyclic(); });
-    m_workers.Async([this] { m_RPort_SCr2BPP->ReceiveEventplanning_scenarioplanning_maxvelocitydefaultCyclic(); });
-    m_workers.Async([this] { m_RPort_SCr2BPP->ReceiveEventsystem_operationmode_stateCyclic(); });
-    
+    // m_workers.Async([this] { m_RPort_SCr2BPP->ReceiveEventmap_vectormapCyclic(); });
+    // m_workers.Async([this] { m_RPort_SCr2BPP->ReceiveEventperception_objectrecognition_objectsCyclic(); });
+    // m_workers.Async([this] { m_RPort_SCr2BPP->ReceiveEventperception_obstaclesegmentation_pointcloudCyclic(); });
+    // m_workers.Async([this] { m_RPort_SCr2BPP->ReceiveEventperception_occupancygridmap_mapCyclic(); });
+    // m_workers.Async([this] { m_RPort_SCr2BPP->ReceiveEventperception_trafficlightrecognition_trafficsignalsCyclic(); });
+    // m_workers.Async([this] { m_RPort_SCr2BPP->ReceiveEventplanning_scenarioplanning_lanedriving_behaviorplanning_behaviorpathplanner_input_lateraloffsetCyclic(); });
+    // m_workers.Async([this] { m_RPort_SCr2BPP->ReceiveEventplanning_scenarioplanning_maxvelocitydefaultCyclic(); });
+    // m_workers.Async([this] { m_RPort_SCr2BPP->ReceiveEventsystem_operationmode_stateCyclic(); });
+
+    // Sleep loop: repeat 1 second sleep
+    while (true) {
+        std::this_thread::sleep_for(std::chrono::seconds(5));
+    }
+
     m_workers.Wait();
 }
  
