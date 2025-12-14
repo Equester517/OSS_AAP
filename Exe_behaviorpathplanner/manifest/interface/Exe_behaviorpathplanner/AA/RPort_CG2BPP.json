@@ -1,0 +1,102 @@
+{
+    "generation-by" : "PARA, PopcornSAR",
+    "autosar-version" : "R20-11",
+    "manifest-type" : "service-instance-manifest",
+    "port-type" : "rport",
+    "instance-specifier" : "Exe_behaviorpathplanner/AA/RPort_CG2BPP",
+    "service-protocol" : "someip",
+    "service-name" : "BPP_SI_costmapgenerator",
+    "service-id" : "1301",
+    "instance-id" : "ANY",
+    "major-version" : "41",
+    "minor-version" : "ANY",
+    "client-id" : "9987",
+    "events" : [
+        {
+            "name" : "planning_scenarioplanning_parking_costmapgenerator_debug_processingtimems",
+            "event-id" : "12601",
+            "transport" : "udp",
+            "max-segment-len" : "0",
+            "separation-time" : "0.0"
+        },
+        {
+            "name" : "planning_scenarioplanning_parking_costmapgenerator_gridmap",
+            "event-id" : "12605",
+            "transport" : "udp",
+            "max-segment-len" : "0",
+            "separation-time" : "0.0"
+        },
+        {
+            "name" : "planning_scenarioplanning_parking_costmapgenerator_occupancygrid",
+            "event-id" : "12607",
+            "transport" : "udp",
+            "max-segment-len" : "0",
+            "separation-time" : "0.0"
+        },
+        {
+            "name" : "planning_scenarioplanning_parking_processingtime",
+            "event-id" : "12802",
+            "transport" : "udp",
+            "max-segment-len" : "0",
+            "separation-time" : "0.0"
+        }
+    ],
+    "methods" : [
+        {
+            "name" : "planning_scenarioplanning_parking_costmapgenerator_describeparameters",
+            "method-id" : "12602",
+            "transport" : "udp",
+            "req-max-segment-len" : "0",
+            "req-separation-time" : "0.0",
+            "resp-max-segment-len" : "0",
+            "resp-separation-time" : "0.0"
+        },
+        {
+            "name" : "planning_scenarioplanning_parking_costmapgenerator_getparameters",
+            "method-id" : "12604",
+            "transport" : "udp",
+            "req-max-segment-len" : "0",
+            "req-separation-time" : "0.0",
+            "resp-max-segment-len" : "0",
+            "resp-separation-time" : "0.0"
+        },
+        {
+            "name" : "planning_scenarioplanning_parking_costmapgenerator_getparametertypes",
+            "method-id" : "12603",
+            "transport" : "udp",
+            "req-max-segment-len" : "0",
+            "req-separation-time" : "0.0",
+            "resp-max-segment-len" : "0",
+            "resp-separation-time" : "0.0"
+        },
+        {
+            "name" : "planning_scenarioplanning_parking_costmapgenerator_listparameters",
+            "method-id" : "12606",
+            "transport" : "udp",
+            "req-max-segment-len" : "0",
+            "req-separation-time" : "0.0",
+            "resp-max-segment-len" : "0",
+            "resp-separation-time" : "0.0"
+        },
+        {
+            "name" : "planning_scenarioplanning_parking_costmapgenerator_setparameters",
+            "method-id" : "12608",
+            "transport" : "udp",
+            "req-max-segment-len" : "0",
+            "req-separation-time" : "0.0",
+            "resp-max-segment-len" : "0",
+            "resp-separation-time" : "0.0"
+        },
+        {
+            "name" : "planning_scenarioplanning_parking_costmapgenerator_setparametersatomically",
+            "method-id" : "12609",
+            "transport" : "udp",
+            "req-max-segment-len" : "0",
+            "req-separation-time" : "0.0",
+            "resp-max-segment-len" : "0",
+            "resp-separation-time" : "0.0"
+        }
+    ],
+    "fields" : [
+    ]
+}

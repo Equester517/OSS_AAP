@@ -1,0 +1,234 @@
+{
+    "generation-by" : "PARA, PopcornSAR",
+    "autosar-version" : "R20-11",
+    "manifest-type" : "service-instance-manifest",
+    "port-type" : "pport",
+    "instance-specifier" : "Exe_motionvelocityplanner/AA/PPort_MVP2OCP",
+    "service-protocol" : "someip",
+    "service-name" : "OCP_SI_motionvelocityplanner",
+    "service-id" : "1910",
+    "instance-id" : "1",
+    "major-version" : "41",
+    "minor-version" : "2",
+    "client-id" : "undefined",
+    "events" : [
+        {
+            "name" : "planning_planningfactors_dynamicobstaclestop",
+            "event-id" : "11206",
+            "transport" : "udp",
+            "max-segment-len" : "0",
+            "separation-time" : "0.0"
+        },
+        {
+            "name" : "planning_planningfactors_outoflane",
+            "event-id" : "11214",
+            "transport" : "udp",
+            "max-segment-len" : "0",
+            "separation-time" : "0.0"
+        },
+        {
+            "name" : "planning_scenarioplanning_lanedriving_motionplanning_motionvelocityplanner_debug_dynamicobstaclestop_pstms",
+            "event-id" : "12002",
+            "transport" : "udp",
+            "max-segment-len" : "0",
+            "separation-time" : "0.0"
+        },
+        {
+            "name" : "planning_scenarioplanning_lanedriving_motionplanning_motionvelocityplanner_debug_dynamicobstaclestop_pstmsdiag",
+            "event-id" : "12003",
+            "transport" : "udp",
+            "max-segment-len" : "0",
+            "separation-time" : "0.0"
+        },
+        {
+            "name" : "planning_scenarioplanning_lanedriving_motionplanning_motionvelocityplanner_debug_markers",
+            "event-id" : "12004",
+            "transport" : "udp",
+            "max-segment-len" : "0",
+            "separation-time" : "0.0"
+        },
+        {
+            "name" : "planning_scenarioplanning_lanedriving_motionplanning_motionvelocityplanner_debug_obstaclevelocitylimiter_pstms",
+            "event-id" : "12005",
+            "transport" : "udp",
+            "max-segment-len" : "0",
+            "separation-time" : "0.0"
+        },
+        {
+            "name" : "planning_scenarioplanning_lanedriving_motionplanning_motionvelocityplanner_debug_obstaclevelocitylimiter_pstmsdiag",
+            "event-id" : "12006",
+            "transport" : "udp",
+            "max-segment-len" : "0",
+            "separation-time" : "0.0"
+        },
+        {
+            "name" : "planning_scenarioplanning_lanedriving_motionplanning_motionvelocityplanner_debug_outoflane_processingtimems",
+            "event-id" : "12007",
+            "transport" : "udp",
+            "max-segment-len" : "0",
+            "separation-time" : "0.0"
+        },
+        {
+            "name" : "planning_scenarioplanning_lanedriving_motionplanning_motionvelocityplanner_debug_outoflane_processingtimemsdiag",
+            "event-id" : "12008",
+            "transport" : "udp",
+            "max-segment-len" : "0",
+            "separation-time" : "0.0"
+        },
+        {
+            "name" : "planning_scenarioplanning_lanedriving_motionplanning_motionvelocityplanner_debug_processingtimems",
+            "event-id" : "12009",
+            "transport" : "udp",
+            "max-segment-len" : "0",
+            "separation-time" : "0.0"
+        },
+        {
+            "name" : "planning_scenarioplanning_lanedriving_motionplanning_motionvelocityplanner_debug_processingtimemsdiag",
+            "event-id" : "12010",
+            "transport" : "udp",
+            "max-segment-len" : "0",
+            "separation-time" : "0.0"
+        },
+        {
+            "name" : "planning_scenarioplanning_lanedriving_motionplanning_motionvelocityplanner_dynamicobstaclestop_debugmarkers",
+            "event-id" : "12012",
+            "transport" : "udp",
+            "max-segment-len" : "0",
+            "separation-time" : "0.0"
+        },
+        {
+            "name" : "planning_scenarioplanning_lanedriving_motionplanning_motionvelocityplanner_dynamicobstaclestop_virtualwalls",
+            "event-id" : "12013",
+            "transport" : "udp",
+            "max-segment-len" : "0",
+            "separation-time" : "0.0"
+        },
+        {
+            "name" : "planning_scenarioplanning_lanedriving_motionplanning_motionvelocityplanner_metrics",
+            "event-id" : "12017",
+            "transport" : "udp",
+            "max-segment-len" : "0",
+            "separation-time" : "0.0"
+        },
+        {
+            "name" : "planning_scenarioplanning_lanedriving_motionplanning_motionvelocityplanner_obstaclevelocitylimiter_debugmarkers",
+            "event-id" : "12018",
+            "transport" : "udp",
+            "max-segment-len" : "0",
+            "separation-time" : "0.0"
+        },
+        {
+            "name" : "planning_scenarioplanning_lanedriving_motionplanning_motionvelocityplanner_obstaclevelocitylimiter_virtualwalls",
+            "event-id" : "12019",
+            "transport" : "udp",
+            "max-segment-len" : "0",
+            "separation-time" : "0.0"
+        },
+        {
+            "name" : "planning_scenarioplanning_lanedriving_motionplanning_motionvelocityplanner_outoflane_debugmarkers",
+            "event-id" : "12020",
+            "transport" : "udp",
+            "max-segment-len" : "0",
+            "separation-time" : "0.0"
+        },
+        {
+            "name" : "planning_scenarioplanning_lanedriving_motionplanning_motionvelocityplanner_outoflane_virtualwalls",
+            "event-id" : "12021",
+            "transport" : "udp",
+            "max-segment-len" : "0",
+            "separation-time" : "0.0"
+        },
+        {
+            "name" : "planning_scenarioplanning_lanedriving_motionplanning_motionvelocityplanner_trajectory",
+            "event-id" : "12026",
+            "transport" : "udp",
+            "max-segment-len" : "0",
+            "separation-time" : "0.0"
+        }
+    ],
+    "methods" : [
+        {
+            "name" : "planning_scenarioplanning_lanedriving_motionplanning_motionvelocityplanner_configlogger",
+            "method-id" : "12001",
+            "transport" : "udp",
+            "req-max-segment-len" : "0",
+            "req-separation-time" : "0.0",
+            "resp-max-segment-len" : "0",
+            "resp-separation-time" : "0.0"
+        },
+        {
+            "name" : "planning_scenarioplanning_lanedriving_motionplanning_motionvelocityplanner_describeparameters",
+            "method-id" : "12011",
+            "transport" : "udp",
+            "req-max-segment-len" : "0",
+            "req-separation-time" : "0.0",
+            "resp-max-segment-len" : "0",
+            "resp-separation-time" : "0.0"
+        },
+        {
+            "name" : "planning_scenarioplanning_lanedriving_motionplanning_motionvelocityplanner_getparameters",
+            "method-id" : "12015",
+            "transport" : "udp",
+            "req-max-segment-len" : "0",
+            "req-separation-time" : "0.0",
+            "resp-max-segment-len" : "0",
+            "resp-separation-time" : "0.0"
+        },
+        {
+            "name" : "planning_scenarioplanning_lanedriving_motionplanning_motionvelocityplanner_getparametertypes",
+            "method-id" : "12014",
+            "transport" : "udp",
+            "req-max-segment-len" : "0",
+            "req-separation-time" : "0.0",
+            "resp-max-segment-len" : "0",
+            "resp-separation-time" : "0.0"
+        },
+        {
+            "name" : "planning_scenarioplanning_lanedriving_motionplanning_motionvelocityplanner_listparameters",
+            "method-id" : "12016",
+            "transport" : "udp",
+            "req-max-segment-len" : "0",
+            "req-separation-time" : "0.0",
+            "resp-max-segment-len" : "0",
+            "resp-separation-time" : "0.0"
+        },
+        {
+            "name" : "planning_scenarioplanning_lanedriving_motionplanning_motionvelocityplanner_service_loadplugin",
+            "method-id" : "12022",
+            "transport" : "udp",
+            "req-max-segment-len" : "0",
+            "req-separation-time" : "0.0",
+            "resp-max-segment-len" : "0",
+            "resp-separation-time" : "0.0"
+        },
+        {
+            "name" : "planning_scenarioplanning_lanedriving_motionplanning_motionvelocityplanner_service_unloadplugin",
+            "method-id" : "12023",
+            "transport" : "udp",
+            "req-max-segment-len" : "0",
+            "req-separation-time" : "0.0",
+            "resp-max-segment-len" : "0",
+            "resp-separation-time" : "0.0"
+        },
+        {
+            "name" : "planning_scenarioplanning_lanedriving_motionplanning_motionvelocityplanner_setparameters",
+            "method-id" : "12024",
+            "transport" : "udp",
+            "req-max-segment-len" : "0",
+            "req-separation-time" : "0.0",
+            "resp-max-segment-len" : "0",
+            "resp-separation-time" : "0.0"
+        },
+        {
+            "name" : "planning_scenarioplanning_lanedriving_motionplanning_motionvelocityplanner_setparametersatomically",
+            "method-id" : "12025",
+            "transport" : "udp",
+            "req-max-segment-len" : "0",
+            "req-separation-time" : "0.0",
+            "resp-max-segment-len" : "0",
+            "resp-separation-time" : "0.0"
+        }
+    ],
+    "fields" : [
+    ]
+}

@@ -1,0 +1,95 @@
+{
+    "generation-by" : "PARA, PopcornSAR",
+    "autosar-version" : "R20-11",
+    "manifest-type" : "service-instance-manifest",
+    "port-type" : "rport",
+    "instance-specifier" : "Exe_behaviorpathplanner/AA/RPort_SS2BPP",
+    "service-protocol" : "someip",
+    "service-name" : "BPP_SI_scenarioselector",
+    "service-id" : "2501",
+    "instance-id" : "ANY",
+    "major-version" : "41",
+    "minor-version" : "ANY",
+    "client-id" : "10005",
+    "events" : [
+        {
+            "name" : "planning_scenarioplanning_scenario",
+            "event-id" : "12505",
+            "transport" : "udp",
+            "max-segment-len" : "0",
+            "separation-time" : "0.0"
+        },
+        {
+            "name" : "planning_scenarioplanning_scenarioselector_debug_processingtimems",
+            "event-id" : "12901",
+            "transport" : "udp",
+            "max-segment-len" : "0",
+            "separation-time" : "0.0"
+        },
+        {
+            "name" : "planning_scenarioplanning_scenarioselector_trajectory",
+            "event-id" : "12908",
+            "transport" : "udp",
+            "max-segment-len" : "0",
+            "separation-time" : "0.0"
+        }
+    ],
+    "methods" : [
+        {
+            "name" : "planning_scenarioplanning_scenarioselector_describeparameters",
+            "method-id" : "12902",
+            "transport" : "udp",
+            "req-max-segment-len" : "0",
+            "req-separation-time" : "0.0",
+            "resp-max-segment-len" : "0",
+            "resp-separation-time" : "0.0"
+        },
+        {
+            "name" : "planning_scenarioplanning_scenarioselector_getparameters",
+            "method-id" : "12904",
+            "transport" : "udp",
+            "req-max-segment-len" : "0",
+            "req-separation-time" : "0.0",
+            "resp-max-segment-len" : "0",
+            "resp-separation-time" : "0.0"
+        },
+        {
+            "name" : "planning_scenarioplanning_scenarioselector_getparametertypes",
+            "method-id" : "12903",
+            "transport" : "udp",
+            "req-max-segment-len" : "0",
+            "req-separation-time" : "0.0",
+            "resp-max-segment-len" : "0",
+            "resp-separation-time" : "0.0"
+        },
+        {
+            "name" : "planning_scenarioplanning_scenarioselector_listparameters",
+            "method-id" : "12905",
+            "transport" : "udp",
+            "req-max-segment-len" : "0",
+            "req-separation-time" : "0.0",
+            "resp-max-segment-len" : "0",
+            "resp-separation-time" : "0.0"
+        },
+        {
+            "name" : "planning_scenarioplanning_scenarioselector_setparameters",
+            "method-id" : "12906",
+            "transport" : "udp",
+            "req-max-segment-len" : "0",
+            "req-separation-time" : "0.0",
+            "resp-max-segment-len" : "0",
+            "resp-separation-time" : "0.0"
+        },
+        {
+            "name" : "planning_scenarioplanning_scenarioselector_setparametersatomically",
+            "method-id" : "12907",
+            "transport" : "udp",
+            "req-max-segment-len" : "0",
+            "req-separation-time" : "0.0",
+            "resp-max-segment-len" : "0",
+            "resp-separation-time" : "0.0"
+        }
+    ],
+    "fields" : [
+    ]
+}

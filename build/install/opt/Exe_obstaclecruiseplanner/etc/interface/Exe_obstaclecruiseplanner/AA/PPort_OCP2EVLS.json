@@ -1,0 +1,188 @@
+{
+    "generation-by" : "PARA, PopcornSAR",
+    "autosar-version" : "R20-11",
+    "manifest-type" : "service-instance-manifest",
+    "port-type" : "pport",
+    "instance-specifier" : "Exe_obstaclecruiseplanner/AA/PPort_OCP2EVLS",
+    "service-protocol" : "someip",
+    "service-name" : "EVLS_SI_obstaclecruiseplanner",
+    "service-id" : "2005",
+    "instance-id" : "1",
+    "major-version" : "41",
+    "minor-version" : "2",
+    "client-id" : "undefined",
+    "events" : [
+        {
+            "name" : "planning_debug_objectsofinterest_obstaclecruiseplanner",
+            "event-id" : "10410",
+            "transport" : "udp",
+            "max-segment-len" : "0",
+            "separation-time" : "0.0"
+        },
+        {
+            "name" : "planning_planningfactors_obstaclecruiseplanner",
+            "event-id" : "11213",
+            "transport" : "udp",
+            "max-segment-len" : "0",
+            "separation-time" : "0.0"
+        },
+        {
+            "name" : "planning_scenarioplanning_clearvelocitylimit",
+            "event-id" : "11401",
+            "transport" : "udp",
+            "max-segment-len" : "0",
+            "separation-time" : "0.0"
+        },
+        {
+            "name" : "planning_scenarioplanning_lanedriving_motionplanning_obstaclecruiseplanner_debug_cruiseplanninginfo",
+            "event-id" : "12102",
+            "transport" : "udp",
+            "max-segment-len" : "0",
+            "separation-time" : "0.0"
+        },
+        {
+            "name" : "planning_scenarioplanning_lanedriving_motionplanning_obstaclecruiseplanner_debug_marker",
+            "event-id" : "12103",
+            "transport" : "udp",
+            "max-segment-len" : "0",
+            "separation-time" : "0.0"
+        },
+        {
+            "name" : "planning_scenarioplanning_lanedriving_motionplanning_obstaclecruiseplanner_debug_processingtimems",
+            "event-id" : "12104",
+            "transport" : "udp",
+            "max-segment-len" : "0",
+            "separation-time" : "0.0"
+        },
+        {
+            "name" : "planning_scenarioplanning_lanedriving_motionplanning_obstaclecruiseplanner_debug_slowdownplanninginfo",
+            "event-id" : "12105",
+            "transport" : "udp",
+            "max-segment-len" : "0",
+            "separation-time" : "0.0"
+        },
+        {
+            "name" : "planning_scenarioplanning_lanedriving_motionplanning_obstaclecruiseplanner_debug_stopplanninginfo",
+            "event-id" : "12106",
+            "transport" : "udp",
+            "max-segment-len" : "0",
+            "separation-time" : "0.0"
+        },
+        {
+            "name" : "planning_scenarioplanning_lanedriving_motionplanning_obstaclecruiseplanner_metrics",
+            "event-id" : "12111",
+            "transport" : "udp",
+            "max-segment-len" : "0",
+            "separation-time" : "0.0"
+        },
+        {
+            "name" : "planning_scenarioplanning_lanedriving_motionplanning_obstaclecruiseplanner_output_stopspeedexceeded",
+            "event-id" : "12112",
+            "transport" : "udp",
+            "max-segment-len" : "0",
+            "separation-time" : "0.0"
+        },
+        {
+            "name" : "planning_scenarioplanning_lanedriving_motionplanning_obstaclecruiseplanner_virtualwall_cruise",
+            "event-id" : "12115",
+            "transport" : "udp",
+            "max-segment-len" : "0",
+            "separation-time" : "0.0"
+        },
+        {
+            "name" : "planning_scenarioplanning_lanedriving_motionplanning_obstaclecruiseplanner_virtualwall_slowdown",
+            "event-id" : "12116",
+            "transport" : "udp",
+            "max-segment-len" : "0",
+            "separation-time" : "0.0"
+        },
+        {
+            "name" : "planning_scenarioplanning_lanedriving_motionplanning_obstaclecruiseplanner_virtualwall_stop",
+            "event-id" : "12117",
+            "transport" : "udp",
+            "max-segment-len" : "0",
+            "separation-time" : "0.0"
+        },
+        {
+            "name" : "planning_scenarioplanning_lanedriving_trajectory",
+            "event-id" : "12401",
+            "transport" : "udp",
+            "max-segment-len" : "0",
+            "separation-time" : "0.0"
+        },
+        {
+            "name" : "planning_scenarioplanning_maxvelocitycandidates",
+            "event-id" : "12502",
+            "transport" : "udp",
+            "max-segment-len" : "0",
+            "separation-time" : "0.0"
+        }
+    ],
+    "methods" : [
+        {
+            "name" : "planning_scenarioplanning_lanedriving_motionplanning_obstaclecruiseplanner_configlogger",
+            "method-id" : "12101",
+            "transport" : "udp",
+            "req-max-segment-len" : "0",
+            "req-separation-time" : "0.0",
+            "resp-max-segment-len" : "0",
+            "resp-separation-time" : "0.0"
+        },
+        {
+            "name" : "planning_scenarioplanning_lanedriving_motionplanning_obstaclecruiseplanner_describeparameters",
+            "method-id" : "12107",
+            "transport" : "udp",
+            "req-max-segment-len" : "0",
+            "req-separation-time" : "0.0",
+            "resp-max-segment-len" : "0",
+            "resp-separation-time" : "0.0"
+        },
+        {
+            "name" : "planning_scenarioplanning_lanedriving_motionplanning_obstaclecruiseplanner_getparameters",
+            "method-id" : "12109",
+            "transport" : "udp",
+            "req-max-segment-len" : "0",
+            "req-separation-time" : "0.0",
+            "resp-max-segment-len" : "0",
+            "resp-separation-time" : "0.0"
+        },
+        {
+            "name" : "planning_scenarioplanning_lanedriving_motionplanning_obstaclecruiseplanner_getparametertypes",
+            "method-id" : "12108",
+            "transport" : "udp",
+            "req-max-segment-len" : "0",
+            "req-separation-time" : "0.0",
+            "resp-max-segment-len" : "0",
+            "resp-separation-time" : "0.0"
+        },
+        {
+            "name" : "planning_scenarioplanning_lanedriving_motionplanning_obstaclecruiseplanner_listparameters",
+            "method-id" : "12110",
+            "transport" : "udp",
+            "req-max-segment-len" : "0",
+            "req-separation-time" : "0.0",
+            "resp-max-segment-len" : "0",
+            "resp-separation-time" : "0.0"
+        },
+        {
+            "name" : "planning_scenarioplanning_lanedriving_motionplanning_obstaclecruiseplanner_setparameters",
+            "method-id" : "12113",
+            "transport" : "udp",
+            "req-max-segment-len" : "0",
+            "req-separation-time" : "0.0",
+            "resp-max-segment-len" : "0",
+            "resp-separation-time" : "0.0"
+        },
+        {
+            "name" : "planning_scenarioplanning_lanedriving_motionplanning_obstaclecruiseplanner_setparametersatomically",
+            "method-id" : "12114",
+            "transport" : "udp",
+            "req-max-segment-len" : "0",
+            "req-separation-time" : "0.0",
+            "resp-max-segment-len" : "0",
+            "resp-separation-time" : "0.0"
+        }
+    ],
+    "fields" : [
+    ]
+}

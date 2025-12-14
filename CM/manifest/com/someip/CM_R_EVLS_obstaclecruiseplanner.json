@@ -1,0 +1,175 @@
+{
+    "generation-by" : "PARA, PopcornSAR",
+    "autosar-version" : "R20-11",
+    "manifest-type" : "service-instance-to-machine-manifest",
+    "service-protocol" : "someip",
+    "connector" : "enP4p3s0",
+    "unicast-address" : "192.168.100.92",
+    "tcp-port" : "3110",
+    "udp-port" : "3110",
+    "skeletons" : [
+    ],
+    "proxies" : [
+        {
+            "service-id" : "2005",
+            "instance-id" : "ANY",
+            "major-version" : "41",
+            "minor-version" : "ANY",
+            "client-id" : "12560",
+            "configuration-options" : [
+            ],
+            "sd-client-timing" : {
+                "initial-delay-min" : "0.1",
+                "initial-delay-max" : "0.2",
+                "repetition-base" : "0.1",
+                "repetition-max" : "4",
+                "ttl" : "16777215"
+            },
+            "eventgroups" : [
+                {
+                    "eventgroup-id" : "10410",
+                    "events" : ["10410"],
+                    "subscribe-ttl" : "16777215",
+                    "subscribe-retry-delay" : "0.0",
+                    "subscribe-retry-max" : "0",
+                    "req-resp-delay-min" : "0.0",
+                    "req-resp-delay-max" : "0.0"
+                },
+                {
+                    "eventgroup-id" : "11213",
+                    "events" : ["11213"],
+                    "subscribe-ttl" : "16777215",
+                    "subscribe-retry-delay" : "0.0",
+                    "subscribe-retry-max" : "0",
+                    "req-resp-delay-min" : "0.0",
+                    "req-resp-delay-max" : "0.0"
+                },
+                {
+                    "eventgroup-id" : "11401",
+                    "events" : ["11401"],
+                    "subscribe-ttl" : "16777215",
+                    "subscribe-retry-delay" : "0.0",
+                    "subscribe-retry-max" : "0",
+                    "req-resp-delay-min" : "0.0",
+                    "req-resp-delay-max" : "0.0"
+                },
+                {
+                    "eventgroup-id" : "12102",
+                    "events" : ["12102"],
+                    "subscribe-ttl" : "16777215",
+                    "subscribe-retry-delay" : "0.0",
+                    "subscribe-retry-max" : "0",
+                    "req-resp-delay-min" : "0.0",
+                    "req-resp-delay-max" : "0.0"
+                },
+                {
+                    "eventgroup-id" : "12103",
+                    "events" : ["12103"],
+                    "subscribe-ttl" : "16777215",
+                    "subscribe-retry-delay" : "0.0",
+                    "subscribe-retry-max" : "0",
+                    "req-resp-delay-min" : "0.0",
+                    "req-resp-delay-max" : "0.0"
+                },
+                {
+                    "eventgroup-id" : "12104",
+                    "events" : ["12104"],
+                    "subscribe-ttl" : "16777215",
+                    "subscribe-retry-delay" : "0.0",
+                    "subscribe-retry-max" : "0",
+                    "req-resp-delay-min" : "0.0",
+                    "req-resp-delay-max" : "0.0"
+                },
+                {
+                    "eventgroup-id" : "12105",
+                    "events" : ["12105"],
+                    "subscribe-ttl" : "16777215",
+                    "subscribe-retry-delay" : "0.0",
+                    "subscribe-retry-max" : "0",
+                    "req-resp-delay-min" : "0.0",
+                    "req-resp-delay-max" : "0.0"
+                },
+                {
+                    "eventgroup-id" : "12106",
+                    "events" : ["12106"],
+                    "subscribe-ttl" : "16777215",
+                    "subscribe-retry-delay" : "0.0",
+                    "subscribe-retry-max" : "0",
+                    "req-resp-delay-min" : "0.0",
+                    "req-resp-delay-max" : "0.0"
+                },
+                {
+                    "eventgroup-id" : "12111",
+                    "events" : ["12111"],
+                    "subscribe-ttl" : "16777215",
+                    "subscribe-retry-delay" : "0.0",
+                    "subscribe-retry-max" : "0",
+                    "req-resp-delay-min" : "0.0",
+                    "req-resp-delay-max" : "0.0"
+                },
+                {
+                    "eventgroup-id" : "12112",
+                    "events" : ["12112"],
+                    "subscribe-ttl" : "16777215",
+                    "subscribe-retry-delay" : "0.0",
+                    "subscribe-retry-max" : "0",
+                    "req-resp-delay-min" : "0.0",
+                    "req-resp-delay-max" : "0.0"
+                },
+                {
+                    "eventgroup-id" : "12115",
+                    "events" : ["12115"],
+                    "subscribe-ttl" : "16777215",
+                    "subscribe-retry-delay" : "0.0",
+                    "subscribe-retry-max" : "0",
+                    "req-resp-delay-min" : "0.0",
+                    "req-resp-delay-max" : "0.0"
+                },
+                {
+                    "eventgroup-id" : "12116",
+                    "events" : ["12116"],
+                    "subscribe-ttl" : "16777215",
+                    "subscribe-retry-delay" : "0.0",
+                    "subscribe-retry-max" : "0",
+                    "req-resp-delay-min" : "0.0",
+                    "req-resp-delay-max" : "0.0"
+                },
+                {
+                    "eventgroup-id" : "12117",
+                    "events" : ["12117"],
+                    "subscribe-ttl" : "16777215",
+                    "subscribe-retry-delay" : "0.0",
+                    "subscribe-retry-max" : "0",
+                    "req-resp-delay-min" : "0.0",
+                    "req-resp-delay-max" : "0.0"
+                },
+                {
+                    "eventgroup-id" : "12401",
+                    "events" : ["12401"],
+                    "subscribe-ttl" : "16777215",
+                    "subscribe-retry-delay" : "0.0",
+                    "subscribe-retry-max" : "0",
+                    "req-resp-delay-min" : "0.0",
+                    "req-resp-delay-max" : "0.0"
+                },
+                {
+                    "eventgroup-id" : "12502",
+                    "events" : ["12502"],
+                    "subscribe-ttl" : "16777215",
+                    "subscribe-retry-delay" : "0.0",
+                    "subscribe-retry-max" : "0",
+                    "req-resp-delay-min" : "0.0",
+                    "req-resp-delay-max" : "0.0"
+                }
+            ],
+            "e2e-event-protection-props" : [
+            ],
+            "e2e-method-protection-props" : [
+            ]
+        }
+    ],
+    "secure-com-props-for-tcp" : [
+    ],
+    "secure-com-props-for-udp" : [
+    ]
+}

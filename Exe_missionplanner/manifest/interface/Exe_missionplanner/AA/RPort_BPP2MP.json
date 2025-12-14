@@ -1,0 +1,34 @@
+{
+    "generation-by" : "PARA, PopcornSAR",
+    "autosar-version" : "R20-11",
+    "manifest-type" : "service-instance-manifest",
+    "port-type" : "rport",
+    "instance-specifier" : "Exe_missionplanner/AA/RPort_BPP2MP",
+    "service-protocol" : "someip",
+    "service-name" : "MP_SI_behaviorpathplanner",
+    "service-id" : "1108",
+    "instance-id" : "ANY",
+    "major-version" : "41",
+    "minor-version" : "ANY",
+    "client-id" : "13313",
+    "events" : [
+        {
+            "name" : "planning_scenarioplanning_lanedriving_behaviorplanning_behaviorpathplanner_output_isrerouteavailable",
+            "event-id" : "11631",
+            "transport" : "udp",
+            "max-segment-len" : "0",
+            "separation-time" : "0.0"
+        },
+        {
+            "name" : "planning_scenarioplanning_modifiedgoal",
+            "event-id" : "12504",
+            "transport" : "udp",
+            "max-segment-len" : "0",
+            "separation-time" : "0.0"
+        }
+    ],
+    "methods" : [
+    ],
+    "fields" : [
+    ]
+}

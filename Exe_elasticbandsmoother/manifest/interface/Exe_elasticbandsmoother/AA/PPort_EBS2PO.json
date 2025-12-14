@@ -1,0 +1,132 @@
+{
+    "generation-by" : "PARA, PopcornSAR",
+    "autosar-version" : "R20-11",
+    "manifest-type" : "service-instance-manifest",
+    "port-type" : "pport",
+    "instance-specifier" : "Exe_elasticbandsmoother/AA/PPort_EBS2PO",
+    "service-protocol" : "someip",
+    "service-name" : "PO_SI_elasticbandsmoother",
+    "service-id" : "1411",
+    "instance-id" : "1",
+    "major-version" : "41",
+    "minor-version" : "2",
+    "client-id" : "undefined",
+    "events" : [
+        {
+            "name" : "planning_scenarioplanning_lanedriving_motionplanning_elasticbandsmoother_debug_calculationtime",
+            "event-id" : "11902",
+            "transport" : "udp",
+            "max-segment-len" : "0",
+            "separation-time" : "0.0"
+        },
+        {
+            "name" : "planning_scenarioplanning_lanedriving_motionplanning_elasticbandsmoother_debug_ebfixedtraj",
+            "event-id" : "11903",
+            "transport" : "udp",
+            "max-segment-len" : "0",
+            "separation-time" : "0.0"
+        },
+        {
+            "name" : "planning_scenarioplanning_lanedriving_motionplanning_elasticbandsmoother_debug_ebtraj",
+            "event-id" : "11904",
+            "transport" : "udp",
+            "max-segment-len" : "0",
+            "separation-time" : "0.0"
+        },
+        {
+            "name" : "planning_scenarioplanning_lanedriving_motionplanning_elasticbandsmoother_debug_extendedtraj",
+            "event-id" : "11905",
+            "transport" : "udp",
+            "max-segment-len" : "0",
+            "separation-time" : "0.0"
+        },
+        {
+            "name" : "planning_scenarioplanning_lanedriving_motionplanning_elasticbandsmoother_debug_processingtimems",
+            "event-id" : "11906",
+            "transport" : "udp",
+            "max-segment-len" : "0",
+            "separation-time" : "0.0"
+        },
+        {
+            "name" : "planning_scenarioplanning_lanedriving_motionplanning_elasticbandsmoother_output_traj",
+            "event-id" : "11911",
+            "transport" : "udp",
+            "max-segment-len" : "0",
+            "separation-time" : "0.0"
+        },
+        {
+            "name" : "planning_scenarioplanning_lanedriving_motionplanning_pathsmoother_path",
+            "event-id" : "12301",
+            "transport" : "udp",
+            "max-segment-len" : "0",
+            "separation-time" : "0.0"
+        }
+    ],
+    "methods" : [
+        {
+            "name" : "planning_scenarioplanning_lanedriving_motionplanning_elasticbandsmoother_configlogger",
+            "method-id" : "11901",
+            "transport" : "udp",
+            "req-max-segment-len" : "0",
+            "req-separation-time" : "0.0",
+            "resp-max-segment-len" : "0",
+            "resp-separation-time" : "0.0"
+        },
+        {
+            "name" : "planning_scenarioplanning_lanedriving_motionplanning_elasticbandsmoother_describeparameters",
+            "method-id" : "11907",
+            "transport" : "udp",
+            "req-max-segment-len" : "0",
+            "req-separation-time" : "0.0",
+            "resp-max-segment-len" : "0",
+            "resp-separation-time" : "0.0"
+        },
+        {
+            "name" : "planning_scenarioplanning_lanedriving_motionplanning_elasticbandsmoother_getparameters",
+            "method-id" : "11909",
+            "transport" : "udp",
+            "req-max-segment-len" : "0",
+            "req-separation-time" : "0.0",
+            "resp-max-segment-len" : "0",
+            "resp-separation-time" : "0.0"
+        },
+        {
+            "name" : "planning_scenarioplanning_lanedriving_motionplanning_elasticbandsmoother_getparametertypes",
+            "method-id" : "11908",
+            "transport" : "udp",
+            "req-max-segment-len" : "0",
+            "req-separation-time" : "0.0",
+            "resp-max-segment-len" : "0",
+            "resp-separation-time" : "0.0"
+        },
+        {
+            "name" : "planning_scenarioplanning_lanedriving_motionplanning_elasticbandsmoother_listparameters",
+            "method-id" : "11910",
+            "transport" : "udp",
+            "req-max-segment-len" : "0",
+            "req-separation-time" : "0.0",
+            "resp-max-segment-len" : "0",
+            "resp-separation-time" : "0.0"
+        },
+        {
+            "name" : "planning_scenarioplanning_lanedriving_motionplanning_elasticbandsmoother_setparameters",
+            "method-id" : "11912",
+            "transport" : "udp",
+            "req-max-segment-len" : "0",
+            "req-separation-time" : "0.0",
+            "resp-max-segment-len" : "0",
+            "resp-separation-time" : "0.0"
+        },
+        {
+            "name" : "planning_scenarioplanning_lanedriving_motionplanning_elasticbandsmoother_setparametersatomically",
+            "method-id" : "11913",
+            "transport" : "udp",
+            "req-max-segment-len" : "0",
+            "req-separation-time" : "0.0",
+            "resp-max-segment-len" : "0",
+            "resp-separation-time" : "0.0"
+        }
+    ],
+    "fields" : [
+    ]
+}

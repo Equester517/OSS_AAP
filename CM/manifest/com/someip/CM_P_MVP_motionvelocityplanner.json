@@ -1,0 +1,215 @@
+{
+    "generation-by" : "PARA, PopcornSAR",
+    "autosar-version" : "R20-11",
+    "manifest-type" : "service-instance-to-machine-manifest",
+    "service-protocol" : "someip",
+    "connector" : "enP4p3s0",
+    "unicast-address" : "192.168.100.92",
+    "tcp-port" : "1910",
+    "udp-port" : "1910",
+    "skeletons" : [
+        {
+            "service-id" : "1910",
+            "instance-id" : "1",
+            "major-version" : "41",
+            "minor-version" : "2",
+            "load-balancing-priority" : "undefined",
+            "load-balancing-weight" : "undefined",
+            "configuration-options" : [
+            ],
+            "sd-server-timing" : {
+                "initial-delay-min" : "0.1",
+                "initial-delay-max" : "0.2",
+                "repetition-base" : "0.1",
+                "repetition-max" : "3",
+                "offer-cyclic" : "0.5",
+                "ttl" : "16777215",
+                "req-resp-delay-min" : "0.0",
+                "req-resp-delay-max" : "0.0"
+            },
+            "eventgroups" : [
+                {
+                    "eventgroup-id" : "11206",
+                    "events" : ["11206"],
+                    "threshold" : "0",
+                    "multicast-address" : "undefined",
+                    "multicast-udp-port" : "0",
+                    "req-resp-delay-min" : "0.0",
+                    "req-resp-delay-max" : "0.0"
+                },
+                {
+                    "eventgroup-id" : "11214",
+                    "events" : ["11214"],
+                    "threshold" : "0",
+                    "multicast-address" : "undefined",
+                    "multicast-udp-port" : "0",
+                    "req-resp-delay-min" : "0.0",
+                    "req-resp-delay-max" : "0.0"
+                },
+                {
+                    "eventgroup-id" : "12002",
+                    "events" : ["12002"],
+                    "threshold" : "0",
+                    "multicast-address" : "undefined",
+                    "multicast-udp-port" : "0",
+                    "req-resp-delay-min" : "0.0",
+                    "req-resp-delay-max" : "0.0"
+                },
+                {
+                    "eventgroup-id" : "12003",
+                    "events" : ["12003"],
+                    "threshold" : "0",
+                    "multicast-address" : "undefined",
+                    "multicast-udp-port" : "0",
+                    "req-resp-delay-min" : "0.0",
+                    "req-resp-delay-max" : "0.0"
+                },
+                {
+                    "eventgroup-id" : "12004",
+                    "events" : ["12004"],
+                    "threshold" : "0",
+                    "multicast-address" : "undefined",
+                    "multicast-udp-port" : "0",
+                    "req-resp-delay-min" : "0.0",
+                    "req-resp-delay-max" : "0.0"
+                },
+                {
+                    "eventgroup-id" : "12005",
+                    "events" : ["12005"],
+                    "threshold" : "0",
+                    "multicast-address" : "undefined",
+                    "multicast-udp-port" : "0",
+                    "req-resp-delay-min" : "0.0",
+                    "req-resp-delay-max" : "0.0"
+                },
+                {
+                    "eventgroup-id" : "12006",
+                    "events" : ["12006"],
+                    "threshold" : "0",
+                    "multicast-address" : "undefined",
+                    "multicast-udp-port" : "0",
+                    "req-resp-delay-min" : "0.0",
+                    "req-resp-delay-max" : "0.0"
+                },
+                {
+                    "eventgroup-id" : "12007",
+                    "events" : ["12007"],
+                    "threshold" : "0",
+                    "multicast-address" : "undefined",
+                    "multicast-udp-port" : "0",
+                    "req-resp-delay-min" : "0.0",
+                    "req-resp-delay-max" : "0.0"
+                },
+                {
+                    "eventgroup-id" : "12008",
+                    "events" : ["12008"],
+                    "threshold" : "0",
+                    "multicast-address" : "undefined",
+                    "multicast-udp-port" : "0",
+                    "req-resp-delay-min" : "0.0",
+                    "req-resp-delay-max" : "0.0"
+                },
+                {
+                    "eventgroup-id" : "12009",
+                    "events" : ["12009"],
+                    "threshold" : "0",
+                    "multicast-address" : "undefined",
+                    "multicast-udp-port" : "0",
+                    "req-resp-delay-min" : "0.0",
+                    "req-resp-delay-max" : "0.0"
+                },
+                {
+                    "eventgroup-id" : "12010",
+                    "events" : ["12010"],
+                    "threshold" : "0",
+                    "multicast-address" : "undefined",
+                    "multicast-udp-port" : "0",
+                    "req-resp-delay-min" : "0.0",
+                    "req-resp-delay-max" : "0.0"
+                },
+                {
+                    "eventgroup-id" : "12012",
+                    "events" : ["12012"],
+                    "threshold" : "0",
+                    "multicast-address" : "undefined",
+                    "multicast-udp-port" : "0",
+                    "req-resp-delay-min" : "0.0",
+                    "req-resp-delay-max" : "0.0"
+                },
+                {
+                    "eventgroup-id" : "12013",
+                    "events" : ["12013"],
+                    "threshold" : "0",
+                    "multicast-address" : "undefined",
+                    "multicast-udp-port" : "0",
+                    "req-resp-delay-min" : "0.0",
+                    "req-resp-delay-max" : "0.0"
+                },
+                {
+                    "eventgroup-id" : "12017",
+                    "events" : ["12017"],
+                    "threshold" : "0",
+                    "multicast-address" : "undefined",
+                    "multicast-udp-port" : "0",
+                    "req-resp-delay-min" : "0.0",
+                    "req-resp-delay-max" : "0.0"
+                },
+                {
+                    "eventgroup-id" : "12018",
+                    "events" : ["12018"],
+                    "threshold" : "0",
+                    "multicast-address" : "undefined",
+                    "multicast-udp-port" : "0",
+                    "req-resp-delay-min" : "0.0",
+                    "req-resp-delay-max" : "0.0"
+                },
+                {
+                    "eventgroup-id" : "12019",
+                    "events" : ["12019"],
+                    "threshold" : "0",
+                    "multicast-address" : "undefined",
+                    "multicast-udp-port" : "0",
+                    "req-resp-delay-min" : "0.0",
+                    "req-resp-delay-max" : "0.0"
+                },
+                {
+                    "eventgroup-id" : "12020",
+                    "events" : ["12020"],
+                    "threshold" : "0",
+                    "multicast-address" : "undefined",
+                    "multicast-udp-port" : "0",
+                    "req-resp-delay-min" : "0.0",
+                    "req-resp-delay-max" : "0.0"
+                },
+                {
+                    "eventgroup-id" : "12021",
+                    "events" : ["12021"],
+                    "threshold" : "0",
+                    "multicast-address" : "undefined",
+                    "multicast-udp-port" : "0",
+                    "req-resp-delay-min" : "0.0",
+                    "req-resp-delay-max" : "0.0"
+                },
+                {
+                    "eventgroup-id" : "12026",
+                    "events" : ["12026"],
+                    "threshold" : "0",
+                    "multicast-address" : "undefined",
+                    "multicast-udp-port" : "0",
+                    "req-resp-delay-min" : "0.0",
+                    "req-resp-delay-max" : "0.0"
+                }
+            ],
+            "e2e-event-protection-props" : [
+            ],
+            "e2e-method-protection-props" : [
+            ]
+        }
+    ],
+    "proxies" : [
+    ],
+    "secure-com-props-for-tcp" : [
+    ],
+    "secure-com-props-for-udp" : [
+    ]
+}
