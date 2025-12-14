@@ -1,0 +1,82 @@
+
+╔==============================================================================╗
+║                    ROS2 vs Standalone Comparison                             ║
+╚==============================================================================╝
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  SCENARIO 1: NO OBJECT (Wide Lane)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+================================================================================
+  NO OBJECT Comparison
+================================================================================
+
+Files:
+  ROS2:       test_files_in_ros2/output_opt_path_no_object.txt
+  Standalone: test_files_in_standalone/out_no_object_standalone.csv
+
+Point Counts:
+  ROS2:       121 points
+  Standalone: 122 points
+  Compared:   121 points
+
+Metric               Mean            Max             Min             Median         
+--------------------------------------------------------------------------------
+Position (cm)                  0.93           8.13           0.03           0.76
+Yaw (deg)                      0.12           0.62           0.00           0.05
+Velocity (m/s)               0.0000         0.0000         0.0000         0.0000
+
+--------------------------------------------------------------------------------
+Verdict:
+  ✅ SIMILAR - Minor differences within tolerance
+  Max position error: 8.13 cm
+  Max yaw error: 0.62 deg
+  Max velocity error: 0.0000 m/s
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  SCENARIO 2: WITH OBJECT (Narrow Lane with Obstacle)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+================================================================================
+  WITH OBJECT Comparison
+================================================================================
+
+Files:
+  ROS2:       test_files_in_ros2/outpit_opt_path_with_object.txt
+  Standalone: test_files_in_standalone/out_with_object_standalone.csv
+
+Point Counts:
+  ROS2:       121 points
+  Standalone: 126 points
+  Compared:   121 points
+
+Metric               Mean            Max             Min             Median         
+--------------------------------------------------------------------------------
+Position (cm)                 74.39         206.40           0.77          74.84
+Yaw (deg)                     10.63          40.83           0.00           8.83
+Velocity (m/s)               0.0000         0.0000         0.0000         0.0000
+
+--------------------------------------------------------------------------------
+Verdict:
+  ⚠️  DIFFERENT - Significant differences detected
+  Max position error: 206.40 cm
+  Max yaw error: 40.83 deg
+  Max velocity error: 0.0000 m/s
+
+
+╔==============================================================================╗
+║                              Summary                                         ║
+╚==============================================================================╝
+
+이 비교는 ROS2와 Standalone 구현의 일관성을 검증합니다.
+두 구현 모두 동일한 OSQP 기반 MPT 최적화 알고리즘을 사용합니다.
+
+차이가 있다면:
+  • Spline interpolation 차이
+  • Numerical precision 차이
+  • Resampling 방법 차이
+
+큰 차이가 없다면 구현이 올바르게 포팅되었음을 의미합니다.
+================================================================================
+

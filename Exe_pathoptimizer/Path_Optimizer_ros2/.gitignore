@@ -1,0 +1,42 @@
+# Build directories
+build/
+bin/
+lib/
+
+# Compiled Object files
+*.o
+*.obj
+
+# Executables
+path_optimizer
+*.exe
+*.out
+*.app
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Temporary files
+*.tmp
+*.log
+
+# Output files (keep template files only)
+optimized_trajectory.csv
+out_*_standalone.csv
+
+# Test output
+test_output.txt
+run_both_scenarios_output.log
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Images (can be regenerated)
+*.png

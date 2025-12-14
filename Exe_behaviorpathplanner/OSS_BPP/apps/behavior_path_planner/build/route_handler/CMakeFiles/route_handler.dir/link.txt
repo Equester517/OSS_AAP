@@ -1,0 +1,2 @@
+/usr/bin/ar qc libroute_handler.a CMakeFiles/route_handler.dir/src/route_handler.cpp.o
+/usr/bin/ranlib libroute_handler.a
