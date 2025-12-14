@@ -1,3 +1,0 @@
-/home/sujin/Documents/01_GIT/OSS_TEST_HELPER/build/CMakeFiles/OSS_TEST_HELPER.dir
-/home/sujin/Documents/01_GIT/OSS_TEST_HELPER/build/CMakeFiles/edit_cache.dir
-/home/sujin/Documents/01_GIT/OSS_TEST_HELPER/build/CMakeFiles/rebuild_cache.dir

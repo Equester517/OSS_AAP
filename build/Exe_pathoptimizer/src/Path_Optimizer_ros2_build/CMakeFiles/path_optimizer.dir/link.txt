@@ -1,1 +1,0 @@
-/usr/lib/ccache/g++  -Wall -Wextra -O3 -DNDEBUG CMakeFiles/path_optimizer.dir/src/main.cpp.o -o path_optimizer  libpath_optimizer_lib.a 
