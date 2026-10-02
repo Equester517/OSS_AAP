@@ -1,0 +1,36 @@
+sudo -E cmake -B build .
+
+sudo cmake --build build --target install -j $(nproc)
+
+sudo -E build/install/para-exec.sh
+
+-------------------------------------------------------------
+[추가 필요 절차]
+
+source /opt/para/para-env-setup.sh
+(이미 셋업 해뒀기 때문에 더이상 불필요)
+
+sudo ip route add 224.0.0.0/4 dev enP4p3s0
+(netplan에 작성해뒀기 때문에 불필요)
+
+이더넷 포트 꽂아서 STATE: LINK Up 으로 셋팅
+(이미 셋업 해뒀기 때문에 더이상 불필요)
+
+
+동적 라이브러리 경로 재설정 (이미 셋업 해뒀기 때문에 더이상 불필요)
+export LD_LIBRARY_PATH=/opt/para/lib:$LD_LIBRARY_PATH
+echo “/opt/para/lib” | sudo tee /etc/ld.so.conf.d/para.conf
+sudo ldconfig
+
+-----------------------------------------------------------
+[전체 로그 저장 스크립트]
+{
+sudo -E cmake -B build .
+sudo cmake --build build --target install -j $(nproc)
+sudo -E build/install/para-exec.sh
+} >&1 | tee total_log.txt
+
+{
+export PARA_LOG_LEVEL=debug
+sudo -E build/install/para-exec.sh
+} >&1 | tee total_log.txt
