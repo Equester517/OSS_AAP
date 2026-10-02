@@ -50,7 +50,7 @@
 #include <nlohmann/json.hpp>
 
 // Socket constants
-#define SOCKET_SERVER_IP "192.168.100.95"
+#define SOCKET_SERVER_IP "192.168.100.10"
 #define SOCKET_SERVER_PORT 9000
 #define SOCKET_BUFFER_SIZE 4096
  
@@ -154,6 +154,7 @@ private:
     bool m_socket_running;
     std::atomic<bool> m_socket_connected;
     std::mutex m_socket_mutex;
+    std::atomic<bool> m_system_operational{true};
     
     /// @brief Socket methods
     bool ConnectToSocketServer();
@@ -173,6 +174,9 @@ private:
 
     /// @brief Send plain text message over socket (if connected)
     void SendSocketMessage(const std::string& message);
+    
+    /// @brief Mark system operational state (pause handlers when false)
+    void SetOperational(bool value) { m_system_operational.store(value); }
 };
  
 } /// namespace aa

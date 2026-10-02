@@ -148,8 +148,8 @@ namespace exe_obstaclecruiseplanner
             // m_workers.Async([this] { m_RPort_SCr2OCP->ReceiveEventplanning_scenarioplanning_maxvelocitydefaultCyclic(); });
             // m_workers.Async([this] { m_RPort_SCr2OCP->ReceiveEventsystem_operationmode_stateCyclic(); });
 
-            m_workers.Async([this]
-                            { m_RPort_SCr2OCP->ReceiveEventscenarioCyclic(); });
+            // m_workers.Async([this]
+            //                 { m_RPort_SCr2OCP->ReceiveEventscenarioCyclic(); });
 
             // m_workers.Async([this] { m_PPort_OCP2SCr->SendEventtrajectoryCyclic(); });
             // m_workers.Async([this] { m_PPort_OCP2SCr->SendEventscenarioCyclic(); });

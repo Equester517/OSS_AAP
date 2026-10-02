@@ -1318,7 +1318,7 @@ void RPort_SCr2OCP::Subscribescenario()
     {
         // regist receiver handler
         // if you want to enable it, please uncomment below code
-        // RegistReceiverscenario();
+        RegistReceiverscenario();
         
         // request subscribe
         auto subscribe = m_interface->scenario.Subscribe(1);
@@ -1410,7 +1410,7 @@ void RPort_SCr2OCP::ReceiveEventscenarioCyclic()
                 }
             }
         }
-        std::this_thread::sleep_for(std::chrono::seconds(1));
+        std::this_thread::sleep_for(std::chrono::seconds(2));
     }
 }
  

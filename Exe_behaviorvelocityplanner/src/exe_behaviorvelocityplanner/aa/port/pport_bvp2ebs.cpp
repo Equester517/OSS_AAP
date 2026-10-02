@@ -4223,7 +4223,7 @@ void PPort_BVP2EBS::SendEventplanning_scenarioplanning_lanedriving_behaviorplann
                 // m_logger.LogError() << "PPort_BVP2EBS::SendEventplanning_scenarioplanning_lanedriving_behaviorplanning_pathCyclic::Send::" << send.Error().Message();
             }
         }
-        std::this_thread::sleep_for(std::chrono::seconds(5));
+        std::this_thread::sleep_for(std::chrono::seconds(35));
     }
 }
  

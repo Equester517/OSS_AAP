@@ -238,7 +238,7 @@ void PPort_SCr2BPP::SendEventlocalization_kinematicstateCyclic()
                 // m_logger.LogError() << "PPort_SCr2BPP::SendEventlocalization_kinematicstateCyclic::Send::" << send.Error().Message();
             }
         }
-        std::this_thread::sleep_for(std::chrono::seconds(1));
+        std::this_thread::sleep_for(std::chrono::seconds(40));
     }
 }
  

@@ -201,7 +201,7 @@ void PPort_OCP2SCr::SendEventscenarioTriggered(const oss::srv::OCP2SCr::skeleton
     }
     else
     {
-        m_logger.LogError() << "PPort_OCP2SCr::SendEventscenarioTriggered::Send::" << send.Error().Message();
+        // m_logger.LogError() << "PPort_OCP2SCr::SendEventscenarioTriggered::Send::" << send.Error().Message();
     }
 }
  

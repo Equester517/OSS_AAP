@@ -205,9 +205,9 @@ void Swc_behaviorpathplanner::Run()
     // m_workers.Async([this] { m_RPort_SCr2BPP->ReceiveEventplanning_scenarioplanning_maxvelocitydefaultCyclic(); });
     // m_workers.Async([this] { m_RPort_SCr2BPP->ReceiveEventsystem_operationmode_stateCyclic(); });
 
-    // Sleep loop: repeat 1 second sleep
+    // // Sleep loop: repeat 1 second sleep
     while (true) {
-        std::this_thread::sleep_for(std::chrono::seconds(5));
+        std::this_thread::sleep_for(std::chrono::seconds(55));
     }
 
     m_workers.Wait();

@@ -2368,7 +2368,7 @@ void RPort_MVP2OCP::ReceiveEventplanning_scenarioplanning_lanedriving_motionplan
                 }
             }
         }
-        std::this_thread::sleep_for(std::chrono::seconds(5));
+        std::this_thread::sleep_for(std::chrono::seconds(35));
     }
 }
  

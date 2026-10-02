@@ -10480,7 +10480,7 @@ void RPort_BPP2BVP::ReceiveEventplanning_scenarioplanning_lanedriving_behaviorpl
                 }
             }
         }
-        std::this_thread::sleep_for(std::chrono::seconds(1));
+        std::this_thread::sleep_for(std::chrono::seconds(40));
     }
 }
  

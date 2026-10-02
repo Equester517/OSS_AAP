@@ -80,7 +80,7 @@ void RPort_SCr2MP::Terminate()
     if (m_interface)
     {
         // stop subscribe
-        // StopSubscribeclock();
+        StopSubscribeclock();
         // StopSubscribelocalization_acceleration();
         StopSubscribelocalization_kinematicstate();
         // StopSubscribemap_vectormap();
@@ -135,7 +135,7 @@ void RPort_SCr2MP::Find(ara::com::ServiceHandleContainer<oss::srv::SCr2MP::proxy
         m_found = true;
         
         // subscribe events
-        // Subscribeclock();
+        Subscribeclock();
         // Subscribelocalization_acceleration();
         Subscribelocalization_kinematicstate();
         // Subscribemap_vectormap();

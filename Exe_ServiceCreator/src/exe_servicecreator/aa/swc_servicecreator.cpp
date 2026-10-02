@@ -111,6 +111,10 @@ void Swc_ServiceCreator::Start()
 
     // Subscribe handlers to receive scenario and trajectory from OCP
     m_RPort_OCP2SCr->RegistEventHandlerscenario([this](const std::uint8_t& scenario_id){
+        if (!m_system_operational.load()) {
+            m_logger.LogWarn() << "Swc_ServiceCreator::Scenario handler skipped (system not operational)";
+            return;
+        }
         m_logger.LogInfo() << "Swc_ServiceCreator::Received scenario ID from OCP: " << static_cast<int>(scenario_id);
         {
             std::lock_guard<std::mutex> lock(m_jsonl_mutex);
@@ -135,7 +139,7 @@ void Swc_ServiceCreator::Start()
                 // Open new JSONL file with sequence suffix
                 std::string output_path = "../../../../../output/Scenario_" + std::to_string(scenario_id)
                                           + "_" + std::to_string(count) + ".jsonl";
-                m_jsonl_output_file = std::make_unique<std::ofstream>(output_path, std::ios::app);
+                m_jsonl_output_file = std::make_unique<std::ofstream>(output_path, std::ios::out | std::ios::trunc);
                 if (m_jsonl_output_file->is_open()) {
                     m_scenario_active = true;
                     m_logger.LogInfo() << "Swc_ServiceCreator::Opened output JSONL file: " << output_path.c_str();
@@ -146,9 +150,17 @@ void Swc_ServiceCreator::Start()
         }
     });
     m_RPort_OCP2SCr->RegistEventHandlertrajectory([this](const oss::srv::OCP2SCr::proxy::events::trajectory::SampleType& traj){
+        if (!m_system_operational.load()) {
+            m_logger.LogWarn() << "Swc_ServiceCreator::Trajectory handler skipped (system not operational)";
+            return;
+        }
         m_logger.LogInfo() << "Swc_ServiceCreator::Received trajectory from OCP, points: " << traj.points.size();
         {
             std::lock_guard<std::mutex> lock(m_jsonl_mutex);
+            if (!m_scenario_active) {
+                m_logger.LogWarn() << "Swc_ServiceCreator::Scenario inactive, ignoring trajectory";
+                return;
+            }
             if (m_jsonl_output_file && m_jsonl_output_file->is_open()) {
                 try {
                     // Convert trajectory to JSON and write to JSONL file (strict key order)
@@ -274,6 +286,7 @@ void Swc_ServiceCreator::Run()
     // m_workers.Async([this] { m_PPort_SCr2EBS->SendEventsystem_operationmode_stateCyclic(); });
 
     m_workers.Async([this] { m_PPort_SCr2MP->SendEventlocalization_kinematicstateCyclic(); });
+    m_workers.Async([this] { m_PPort_SCr2MP->SendEventclockCyclic(); });
     
     // m_workers.Async([this] { m_PPort_SCr2PO->SendEventclockCyclic(); });
     // m_workers.Async([this] { m_PPort_SCr2PO->SendEventlocalization_accelerationCyclic(); });
@@ -444,9 +457,9 @@ void Swc_ServiceCreator::Run()
     // m_workers.Async([this] { m_RPort_PV2SCr->ReceiveEventplanning_scenarioplanning_trajectoryCyclic(); });
     
     // Sleep loop: repeat 1 second sleep
-    while (true) {
-        std::this_thread::sleep_for(std::chrono::seconds(1));
-    }
+    // while (true) {
+    //     std::this_thread::sleep_for(std::chrono::seconds(30));
+    // }
     
     m_workers.Wait();
 }
@@ -511,19 +524,34 @@ void Swc_ServiceCreator::SocketReceiveThread()
                 
                 m_logger.LogInfo() << "Swc_ServiceCreator::Socket data: " << received_data.c_str();
                 
-                // Parse scenario data and send to OCP
+                // Parse scenario number and send it to OCP & MP
                 if (received_data == "scenario_1") {
                     m_logger.LogInfo() << "Swc_ServiceCreator::Sending scenario 1 to OCP";
                     std::uint8_t scenario_value = 1;
                     m_PPort_SCr2OCP->SendEventscenarioTriggered(scenario_value);
+                    oss::type::builtin_interfaces::msg::Time scr_time;
+                    scr_time.sec = 111;
+                    scr_time.nanosec = 111;
+                    m_logger.LogInfo() << "Swc_ServiceCreator::Sending scr_time"<< scr_time.sec <<":" << scr_time.nanosec << " to MP";
+                    m_PPort_SCr2MP->SendEventclockTriggered(scr_time);
                 } else if (received_data == "scenario_2") {
                     m_logger.LogInfo() << "Swc_ServiceCreator::Sending scenario 2 to OCP";
                     std::uint8_t scenario_value = 2;
                     m_PPort_SCr2OCP->SendEventscenarioTriggered(scenario_value);
+                    oss::type::builtin_interfaces::msg::Time scr_time;
+                    scr_time.sec = 222;
+                    scr_time.nanosec = 222;
+                    m_logger.LogInfo() << "Swc_ServiceCreator::Sending scr_time"<< scr_time.sec <<":" << scr_time.nanosec << " to MP";
+                    m_PPort_SCr2MP->SendEventclockTriggered(scr_time);
                 } else if (received_data == "scenario_3") {
                     m_logger.LogInfo() << "Swc_ServiceCreator::Sending scenario 3 to OCP";
                     std::uint8_t scenario_value = 3;
                     m_PPort_SCr2OCP->SendEventscenarioTriggered(scenario_value);
+                    oss::type::builtin_interfaces::msg::Time scr_time;
+                    scr_time.sec = 333;
+                    scr_time.nanosec = 333;
+                    m_logger.LogInfo() << "Swc_ServiceCreator::Sending scr_time"<< scr_time.sec <<":" << scr_time.nanosec << " to MP";
+                    m_PPort_SCr2MP->SendEventclockTriggered(scr_time);
                 } else {
                     m_logger.LogWarn() << "Swc_ServiceCreator::Unknown scenario command: " << received_data.c_str();
                 }
@@ -633,9 +661,13 @@ nlohmann::json Swc_ServiceCreator::trajectoryToJson(const oss::srv::OCP2SCr::pro
     // Build message object matching input JSONL structure
     json message;
 
-    // Header (preserve OCP's values)
-    message["header"]["stamp"]["sec"] = traj.header.stamp.sec;
-    message["header"]["stamp"]["nanosec"] = traj.header.stamp.nanosec;
+    // Header (preserve OCP's values) - must maintain strict key order
+    json header;
+    json stamp;
+    stamp["sec"] = traj.header.stamp.sec;
+    stamp["nanosec"] = traj.header.stamp.nanosec;
+    header["stamp"] = stamp;
+    
     // Convert frame_id to string (handle byte arrays or string-like)
     {
         std::string frame_id_str;
@@ -646,9 +678,9 @@ nlohmann::json Swc_ServiceCreator::trajectoryToJson(const oss::srv::OCP2SCr::pro
         if (frame_id_str.empty()) {
             frame_id_str = "map";
         }
-        message["header"]["frame_id"] = frame_id_str;
+        header["frame_id"] = frame_id_str;
     }
-    
+    message["header"] = header
     // Points array
     json points = json::array();
     for (const auto& point : traj.points) {
@@ -666,8 +698,8 @@ nlohmann::json Swc_ServiceCreator::trajectoryToJson(const oss::srv::OCP2SCr::pro
         point_obj["pose"]["orientation"]["z"] = point.pose.orientation.z;
         point_obj["pose"]["orientation"]["w"] = point.pose.orientation.w;
         
-        point_obj["longitudinal_velocity_mps"] = point.longitudinal_velocity_mps;
-        point_obj["lateral_velocity_mps"] = point.lateral_velocity_mps;
+        point_obj["longitudinal_velocity_mps"] = point.longitudinal_velocity_mps;1
+        point_obj["lateral_velocity_mp335s"] = point.lateral_velocity_mps;
         point_obj["acceleration_mps2"] = point.acceleration_mps2;
         point_obj["heading_rate_rps"] = point.heading_rate_rps;
         point_obj["front_wheel_angle_rad"] = point.front_wheel_angle_rad;

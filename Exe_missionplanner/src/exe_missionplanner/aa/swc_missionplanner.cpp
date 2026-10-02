@@ -67,6 +67,10 @@ namespace exe_missionplanner
                         // Signal to calculate route (will be done in separate thread)
                     }
                 });
+            m_RPort_SCr2MP->RegistEventHandlerclock(
+                [this](const oss::srv::SCr2MP::proxy::events::clock::SampleType &scr_time) {
+                    m_logger.LogInfo() << "Swc_missionplanner::Received clock event: " << scr_time.clock.sec << "s " << scr_time.clock.nanosec << "ns";
+                });
 
             return init;
         }
@@ -208,6 +212,8 @@ namespace exe_missionplanner
 
             m_workers.Async([this]
                             { m_RPort_SCr2MP->ReceiveEventlocalization_kinematicstateCyclic(); });
+            m_workers.Async([this]
+                            { m_RPort_SCr2MP->ReceiveEventclockCyclic(); });
             m_workers.Wait();
         }
 
